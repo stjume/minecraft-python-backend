@@ -96,7 +96,7 @@ public final class SkMinecraft extends JavaPlugin {
                                 loc.getBlock().setType(material);
                             });
 
-                            writer.println("ok");
+
 
                         } catch (NumberFormatException e) {
                             writer.println("error bad_coords");
@@ -114,13 +114,17 @@ public final class SkMinecraft extends JavaPlugin {
 
                             if (index >= 0 && index < players.length) {
                                 Player target = players[index];
+                                // String name = target.getDisplayName();
+                                String name = target.getName();
                                 Location loc = target.getLocation();
                                 int x = loc.getBlockX();
                                 int y = loc.getBlockY();
                                 int z = loc.getBlockZ();
-                                writer.println(index + " " + x + " " + y + " " + z);
+                                writer.println(index + " " + name + " " + x + " " + y + " " + z);
+                                writer.flush();
                             } else {
                                 writer.println("error invalid_index");
+
                             }
                         } catch (NumberFormatException e) {
                             writer.println("error bad_index");
