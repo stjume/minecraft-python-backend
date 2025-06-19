@@ -1,0 +1,4 @@
+name: SkMinecraft
+version: '1.0-SNAPSHOT'
+main: org.sk.skMinecraft.SkMinecraft
+api-version: '1.21'
