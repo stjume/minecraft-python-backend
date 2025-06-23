@@ -2,12 +2,12 @@ package org.sk.skMinecraft.commands;
 
 import org.bukkit.Bukkit;
 
-public class CommandPostChat extends Command {
+public class PostChat extends Command {
 
     private final String message;
 
-    public CommandPostChat(String command) {
-        this.message = command.replaceFirst("postToChat ", "");
+    public PostChat(String command) {
+        this.message = command.replaceFirst("postChat ", "");
     }
 
     @Override

@@ -4,13 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.io.PrintWriter;
-
-public class CommandGetPlayer extends Command {
+public class GetPlayer extends Command {
 
     private int playerIndex;
 
-    public CommandGetPlayer(String command) {
+    public GetPlayer(String command) {
         String[] parts = command.split(" ");
 
         if(parts.length != 2) {

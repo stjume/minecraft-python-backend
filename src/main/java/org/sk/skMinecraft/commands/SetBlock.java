@@ -5,14 +5,11 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 
-import java.io.PrintWriter;
-
-public class CommandSetBlock extends Command {
+public class SetBlock extends Command {
     private int x,y,z;
-    private String blockId;
+    private Material material;
 
-
-    public CommandSetBlock(String command) {
+    public SetBlock(String command) {
         String[] parts = command.split(" ");
 
         this.valid = true;
@@ -20,25 +17,23 @@ public class CommandSetBlock extends Command {
             this.x = Integer.parseInt(parts[1]);
             this.y = Integer.parseInt(parts[2]);
             this.z = Integer.parseInt(parts[3]);
-            this.blockId = parts[4].toUpperCase();
-
-
         } catch (NumberFormatException e) {
+            this.valid = false;
+        }
+
+        String blockId = parts[4].toUpperCase();
+        this.material = Material.matchMaterial(blockId);
+
+        if (this.material == null || !this.material.isBlock()) {
             this.valid = false;
         }
     }
 
     public void apply() {
-        Material material = Material.matchMaterial(blockId);
-        if (material == null || !material.isBlock()) {
-            writer.println("error invalid_block");
-            return;
-        }
-
         Bukkit.getScheduler().runTask(this.plugin, () -> {
             World world = Bukkit.getWorlds().getFirst(); // default world
             Location loc = new Location(world, x, y, z);
-            loc.getBlock().setType(material);
+            loc.getBlock().setType(this.material);
         });
     }
 }
