@@ -8,10 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/CommandFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/CommandFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/SkMinecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/SkMinecraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/CommandGetPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/GetPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/CommandPostChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/PostChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/CommandSetBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/SetBlock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

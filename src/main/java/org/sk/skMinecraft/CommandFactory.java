@@ -2,7 +2,6 @@ package org.sk.skMinecraft;
 
 import org.sk.skMinecraft.commands.*;
 
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.function.Function;
 
@@ -17,6 +16,7 @@ public class CommandFactory {
         this.commands.put("getPlayer", GetPlayer::new);
         this.commands.put("postChat", PostChat::new);
         this.commands.put("spawnEntity", SpawnEntity::new);
+        this.commands.put("chatCommand", ChatCommand::new);
     }
 
     public Command build(String command) {
