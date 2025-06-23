@@ -6,15 +6,11 @@ import org.bukkit.entity.Player;
 
 import java.io.PrintWriter;
 
-public class CommandGetPlayer implements Command{
+public class CommandGetPlayer extends Command {
 
-    private PrintWriter writer;
-
-    private boolean valid;
     private int playerIndex;
 
-    public CommandGetPlayer(PrintWriter writer, String command) {
-        this.writer = writer;
+    public CommandGetPlayer(String command) {
         String[] parts = command.split(" ");
 
         if(parts.length != 2) {
@@ -27,11 +23,6 @@ public class CommandGetPlayer implements Command{
         } catch (NumberFormatException e) {
             this.valid = false;
         }
-    }
-
-    @Override
-    public boolean isValid() {
-        return this.valid;
     }
 
     @Override

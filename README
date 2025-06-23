@@ -12,7 +12,7 @@ A simple minecraft plugin for sending commands to a server
 - `getPlayer <index>` gets information about a player
   - `<index>` the index of the online Player
   - returns: `<index> <name> <x> <y> <z> <rotation>`
-- `chat <message>` posts a message to chat
+- `postChat <message>` posts a message to chat
   - `<message>` is the message which should be posted, everything after the `<chat>` is interpreted as the message
-  - example: `chat Hello World my name is Adrian` will post the message "Hello World my name is Adrian" to the chat
+  - example: `postChat Hello World my name is Adrian` will post the message "Hello World my name is Adrian" to the chat
 - 

@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="56430fb8-723f-4a4f-9a78-9d6914db2091" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/CommandFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/CommandFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/SkMinecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/SkMinecraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/Command.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/CommandGetPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/CommandGetPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/CommandSetBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/sk/skMinecraft/commands/CommandSetBlock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

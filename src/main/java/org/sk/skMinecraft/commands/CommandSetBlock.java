@@ -7,15 +7,12 @@ import org.bukkit.World;
 
 import java.io.PrintWriter;
 
-public class CommandSetBlock implements Command {
-    private PrintWriter writer;
+public class CommandSetBlock extends Command {
     private int x,y,z;
     private String blockId;
 
-    private boolean valid;
 
-    public CommandSetBlock(PrintWriter writer, String command) {
-        this.writer = writer;
+    public CommandSetBlock(String command) {
         String[] parts = command.split(" ");
 
         this.valid = true;
@@ -38,14 +35,10 @@ public class CommandSetBlock implements Command {
             return;
         }
 
-        Bukkit.getScheduler().runTask(this, () -> {
+        Bukkit.getScheduler().runTask(this.plugin, () -> {
             World world = Bukkit.getWorlds().getFirst(); // default world
             Location loc = new Location(world, x, y, z);
             loc.getBlock().setType(material);
         });
-    }
-
-    public boolean isValid() {
-        return this.valid;
     }
 }

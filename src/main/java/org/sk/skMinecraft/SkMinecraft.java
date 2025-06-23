@@ -83,6 +83,8 @@ public final class SkMinecraft extends JavaPlugin {
 
                 if(!command_obj.isValid()) return;
 
+                command_obj.setParameters(writer, this);
+
                 command_obj.apply();
             }
 
