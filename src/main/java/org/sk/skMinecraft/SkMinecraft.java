@@ -70,7 +70,7 @@ public final class SkMinecraft extends JavaPlugin {
                 PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
 
         ) {
-            CommandFactory commandFactory = new CommandFactory(writer);
+            CommandFactory commandFactory = new CommandFactory();
 
             String line;
             while ((line = reader.readLine()) != null) {
@@ -81,7 +81,7 @@ public final class SkMinecraft extends JavaPlugin {
 
                 Command command_obj = commandFactory.build(command);
 
-                if(!command_obj.isValid()) return;
+                if(!command_obj.isValid()) continue;
 
                 command_obj.setParameters(writer, this);
 

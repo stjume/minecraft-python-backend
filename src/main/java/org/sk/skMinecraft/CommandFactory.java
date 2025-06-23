@@ -1,9 +1,6 @@
 package org.sk.skMinecraft;
 
-import org.sk.skMinecraft.commands.Command;
-import org.sk.skMinecraft.commands.CommandGetPlayer;
-import org.sk.skMinecraft.commands.CommandPostChat;
-import org.sk.skMinecraft.commands.CommandSetBlock;
+import org.sk.skMinecraft.commands.*;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -11,19 +8,15 @@ import java.util.function.Function;
 
 public class CommandFactory {
 
-    private PrintWriter writer;
+    private final HashMap<String, Function<String, Command>> commands;
 
-    private HashMap<String, Function<String, Command>> commands;
-
-    public CommandFactory(PrintWriter writer) {
-        this.writer = writer;
-
+    public CommandFactory() {
         this.commands = new HashMap<>();
 
-        this.commands.put("setBlock", CommandSetBlock::new);
-        this.commands.put("getPlayer", CommandGetPlayer::new);
-        this.commands.put("postChat", CommandPostChat::new);
-
+        this.commands.put("setBlock", SetBlock::new);
+        this.commands.put("getPlayer", GetPlayer::new);
+        this.commands.put("postChat", PostChat::new);
+        this.commands.put("spawnEntity", SpawnEntity::new);
     }
 
     public Command build(String command) {

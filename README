@@ -15,4 +15,6 @@ A simple minecraft plugin for sending commands to a server
 - `postChat <message>` posts a message to chat
   - `<message>` is the message which should be posted, everything after the `<chat>` is interpreted as the message
   - example: `postChat Hello World my name is Adrian` will post the message "Hello World my name is Adrian" to the chat
-- 
+- `spawnEntity <x> <y> <z> <entityid>`
+  - `<x> <y> <z>` position
+  - `<entityid>` a string with entity id full list can be cound here: [Entities](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)
