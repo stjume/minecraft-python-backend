@@ -38,16 +38,27 @@ A simple minecraft plugin for sending commands to a server
   - Make special note of the space before the first `;|;` this is important because otherwise the `batch` command can not be recognized
   - a seperator at the end is not necessary but does not affect the outcome, the seperator after the `batch` command is necessary
 
+## Argument type
+
+## Positional Arguments
+
+Positional arguments are always the first arguments in argument list. They are marked as `<arg>`. They only consist of the value.
+
 ### Optional Arguments
 
 Optional arguments are arguments that are strictly necessary but offer additional options.
 They always have the form `<argument>:<value>` where `<argument>` is the name of the argument defined by the command and `<value>` is the value.
 Optional arguments are marked as `?arg?`
+
 Important usage guides for optional arguments are:
 
-- There **must not** be a space anywhere in this configuration. If the value needs to contain a space please replace it with the sequence `|&s&|`, this will be interpreted as a space 
+- There **must not** be a space anywhere in this configuration. If the value needs to contain a space please replace it with the sequence `|&s&|`, this will be interpreted as a space
 - They must come **after** any positional arguments
 
 ### Flags
 
-Flagas are arguments that toggle an effekt, the are markt by  `!flag!`.
+Flags are arguments that toggle an effect, they are marked by `!flag!`.
+
+### General notes
+
+- Optional arguments and flags can be in an arbitrary order
