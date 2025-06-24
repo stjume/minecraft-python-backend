@@ -55,8 +55,8 @@ A simple minecraft plugin for sending commands to a server
     - `SENT:getInv 0`
     - `RECEIVED:0:LILY_OF_THE_VALLEY:1 4:STONE_PRESSURE_PLATE:1 7:SCULK_SHRIEKER:1 11:REDSTONE:13 25:DISPENSER:1 29:TARGET:1`
 - `batch ;|;<command:String>;|;<command:String>` Runs all commands in a batch, the `;|;` acts as the seperator. Please make sure there are no spaces around the seperator except before the first one.
-  - `example:`
-    - `SENT:batch ;|;addInv 0 wooden_pickaxe 1 unbreakable;|;postChat Hello World this is message` This would give the player wooden pickaxe and post the message "Hello World this is a message" to the chat
+  - `example:` This example gives the player wooden pickaxe and post the message "Hello World this is a message" to the chat
+    - `SENT:batch ;|;addInv 0 wooden_pickaxe 1 unbreakable;|;postChat Hello World this is message`
     - `RECEIVED:`  
   - Make special note of the space before the first `;|;` this is important because otherwise the `batch` command can not be recognized
   - a seperator at the end is not necessary but does not affect the outcome, the seperator after the `batch` command is necessary
