@@ -29,6 +29,10 @@ A simple minecraft plugin for sending commands to a server
   - `?name?` the custom name of the stack in the inventory
   - `?slot?` The slot in which the item should be added
   - `!unbreakable!` Controls wether or not the item is unbreakable or not
+- `getInv <playerIndex>` Returns the inventory of a player
+  - `<playerIndex>` Index of the player to query
+  - `returns`: A series of items of the following structure: `<index>:<materialname>:<amount>`, these are separated by spaces. Notably only inventory slots with content will be sent everything else can be assumed to be empty.
+  - `example:` A possible answer could look like this: `0:LILY_OF_THE_VALLEY:1 4:STONE_PRESSURE_PLATE:1 7:SCULK_SHRIEKER:1 11:REDSTONE:13 25:DISPENSER:1 29:TARGET:1`
 - `batch ;|;<command>;|;<command>` Runs all commands in a batch, the `;|;` acts as the seperator. Please make sure there are no spaces around the seperator except before the first one.
   - `example`: `batch ;|;addInv 0 wooden_pickaxe 1 unbreakable;|;postChat Hello World this is message` This would give the player wooden pickaxe and post the message "Hello World this is a message" to the chat  
   - Make special note of the space before the first `;|;` this is important because otherwise the `batch` command can not be recognized

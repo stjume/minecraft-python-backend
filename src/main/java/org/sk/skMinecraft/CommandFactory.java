@@ -23,6 +23,7 @@ public class CommandFactory {
         this.commands.put("spawnEntity", SpawnEntity::new);
 
         this.commands.put("addInv", AddInventory::new);
+        this.commands.put("getInv", GetInventory::new);
 
         this.commands.put("batch", Batching::new);
     }
