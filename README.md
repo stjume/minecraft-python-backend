@@ -15,7 +15,7 @@ A simple minecraft plugin for sending commands to a server
   - `example`: `0 ThisRyan 39 83 72 17`
 - `postChat <message:string>` posts a message to chat
   - `<message>` is the message which should be posted, everything after the `postChat` is interpreted as the message
-  - example: `postChat Hello World my name is Adrian` will post the message "Hello World my name is Adrian" to the chat
+  - `example`: `postChat Hello World my name is Adrian` will post the message "Hello World my name is Adrian" to the chat
 - `spawnEntity <x:int> <y:int> <z:int> <entityid:String>`
   - `<x> <y> <z>` position
   - `<entityid>` a string with entity id full list can be cound here: [Entities](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)
@@ -31,6 +31,7 @@ A simple minecraft plugin for sending commands to a server
   - `?name?` the custom name of the stack in the inventory
   - `?slot?` The slot in which the item should be added
   - `!unbreakable!` Controls wether or not the item is unbreakable or not
+  - `example:`: `addInv 0 wooden_pickaxe 1 unbreakable name:Adrians|&s&|Pickaxe slot:2`
 - `getInv <playerIndex:int>` Returns the inventory of a player
   - `<playerIndex>` Index of the player to query
   - `returns`: A series of items of the following structure: `<index:int>:<materialname:String>:<amount:int>`, these are separated by spaces. Notably only inventory slots with content will be sent everything else can be assumed to be empty.
@@ -38,7 +39,7 @@ A simple minecraft plugin for sending commands to a server
 - `batch ;|;<command:String>;|;<command:String>` Runs all commands in a batch, the `;|;` acts as the seperator. Please make sure there are no spaces around the seperator except before the first one.
   - `example`: `batch ;|;addInv 0 wooden_pickaxe 1 unbreakable;|;postChat Hello World this is message` This would give the player wooden pickaxe and post the message "Hello World this is a message" to the chat  
   - Make special note of the space before the first `;|;` this is important because otherwise the `batch` command can not be recognized
-  - a seperator at the end is not necessary but does not affect the outcome, the seperator after the `batch` command is necessary
+  - a seperator at the end is not necessary but does not effect the outcome, the seperator after the `batch` command is necessary
 
 ## Argument type
 
