@@ -18,6 +18,7 @@ A simple minecraft plugin for sending commands to a server
 - `spawnEntity <x> <y> <z> <entityid>`
   - `<x> <y> <z>` position
   - `<entityid>` a string with entity id full list can be cound here: [Entities](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)
+  - `returns`: the uuid with which the entity can be identified
 - `chatCommand <command>` Runs chat command in console
   - `<command>` is the command, everything after the `chatCommand` is interpreted as the command. It should not contain the /
   - example: `chatCommand say Hello from plugin!` Will run the command `/say Hello from plugin!`
