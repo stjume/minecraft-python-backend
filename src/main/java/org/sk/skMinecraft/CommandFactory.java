@@ -13,12 +13,18 @@ public class CommandFactory {
         this.commands = new HashMap<>();
 
         this.commands.put("setBlock", SetBlock::new);
+        this.commands.put("getBlock", GetBlock::new);
+
         this.commands.put("getPlayer", GetPlayer::new);
+
         this.commands.put("postChat", PostChat::new);
+        this.commands.put("chatCommand", ChatCommand::new);
+
         this.commands.put("spawnEntity", SpawnEntity::new);
 
         this.commands.put("addInv", AddInventory::new);
 
+        this.commands.put("batch", Batching::new);
     }
 
     public Command build(String command) {
