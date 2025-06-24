@@ -29,3 +29,20 @@ A simple minecraft plugin for sending commands to a server
   - `?name?` the custom name of the stack in the inventory
   - `?slot?` The slot in which the item should be added
   - `!unbreakable!` Controls wether or not the item is unbreakable or not
+- `batch ;|;<command>;|;<command>` Runs all commands in a batch, the `;|;` acts as the seperator. Please make sure there are no spaces around the seperator except before the first one.
+  - `example`: `batch ;|;addInv 0 wooden_pickaxe 1 unbreakable;|;postChat Hello World this is message` This would give the player wooden pickaxe and post the message "Hello World this is a message" to the chat  
+  - Make special note of the space before the first `;|;` this is important because otherwise the `batch` command can not be recognized
+  - a seperator at the end is not necessary but does not affect the outcome, the seperator after the `batch` command is necessary
+### Optional Arguments
+
+Optional arguments are arguments that are strictly necessary but offer additional options.
+They always have the form `<argument>:<value>` where `<argument>` is the name of the argument defined by the command and `<value>` is the value.
+Optional arguments are marked as `?arg?`
+Important usage guides for optional arguments are:
+
+- There **must not** be a space anywhere in this configuration. If the value needs to contain a space please replace it with the sequence `|&s&|`, this will be interpreted as a space 
+- They must come **after** any positional arguments
+
+### Flags
+
+Flagas are arguments that toggle an effekt, the are markt by  `!flag!`.
