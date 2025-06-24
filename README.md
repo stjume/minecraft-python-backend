@@ -11,7 +11,7 @@ A simple minecraft plugin for sending commands to a server
   - `<x> <y> <z>` position of the block
 - `getPlayer <index>` gets information about a player
   - `<index>` the index of the online Player
-  - returns: `<index> <name> <x> <y> <z> <rotation>`
+  - `returns`: `<index> <name> <x> <y> <z> <rotation>`
 - `postChat <message>` posts a message to chat
   - `<message>` is the message which should be posted, everything after the `postChat` is interpreted as the message
   - example: `postChat Hello World my name is Adrian` will post the message "Hello World my name is Adrian" to the chat
@@ -37,6 +37,7 @@ A simple minecraft plugin for sending commands to a server
   - `example`: `batch ;|;addInv 0 wooden_pickaxe 1 unbreakable;|;postChat Hello World this is message` This would give the player wooden pickaxe and post the message "Hello World this is a message" to the chat  
   - Make special note of the space before the first `;|;` this is important because otherwise the `batch` command can not be recognized
   - a seperator at the end is not necessary but does not affect the outcome, the seperator after the `batch` command is necessary
+
 ### Optional Arguments
 
 Optional arguments are arguments that are strictly necessary but offer additional options.
