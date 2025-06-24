@@ -39,7 +39,8 @@ A simple minecraft plugin for sending commands to a server
 - `batch ;|;<command:String>;|;<command:String>` Runs all commands in a batch, the `;|;` acts as the seperator. Please make sure there are no spaces around the seperator except before the first one.
   - `example`: `batch ;|;addInv 0 wooden_pickaxe 1 unbreakable;|;postChat Hello World this is message` This would give the player wooden pickaxe and post the message "Hello World this is a message" to the chat  
   - Make special note of the space before the first `;|;` this is important because otherwise the `batch` command can not be recognized
-  - a seperator at the end is not necessary but does not effect the outcome, the seperator after the `batch` command is necessary
+  - a seperator at the end is not necessary but does not affect the outcome, the seperator after the `batch` command is necessary
+  - If you batch multiple commands which receive input the output comes line-by-line in the order of the commands in the batching command
 
 ## Argument type
 
