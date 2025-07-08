@@ -6,6 +6,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import static org.bukkit.Bukkit.getOnlinePlayers;
 
@@ -44,7 +45,13 @@ public class GetInventory extends Command {
                 ItemStack stack = inv.getItem(i);
                 if(stack == null) continue;
 
-                result.append(i).append(":").append(stack.getType().name()).append(":").append(stack.getAmount());
+                ItemMeta meta = stack.getItemMeta();
+
+                assert meta != null;
+                result.append(i).append(":");
+                result.append(stack.getType().name());
+                result.append(";").append("display_name").append("@").append(meta.getDisplayName().replace(" ", ArgumentParser.spaceEscape));
+                result.append(":").append(stack.getAmount());
 
                 result.append(" ");
             }

@@ -9,7 +9,7 @@ public class ArgumentParser {
 
     public static Function<String, Object> StringParser = (arg) -> arg;
 
-    private static String spaceEscape = "|&s&|";
+    public static String spaceEscape = "|&s&|";
 
     public static class ArgumentResult {
         Object value;
