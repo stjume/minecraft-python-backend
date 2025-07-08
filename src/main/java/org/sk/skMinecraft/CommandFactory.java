@@ -26,6 +26,9 @@ public class CommandFactory {
         this.commands.put("getInv", GetInventory::new);
 
         this.commands.put("batch", Batching::new);
+
+        this.commands.put("spawnBossBar", SpawnBossBar::new);
+        this.commands.put("editBossBar", EditBossBar::new);
     }
 
     public Command build(String command) {

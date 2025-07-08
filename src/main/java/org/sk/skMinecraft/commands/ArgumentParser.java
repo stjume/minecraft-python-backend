@@ -33,6 +33,10 @@ public class ArgumentParser {
         public boolean isNull() {
             return value == null;
         }
+
+        public float asFloat() {
+            return (Float)value;
+        }
     }
 
     private record argument(Function<String, Object> parser, Object defaultValue) {}

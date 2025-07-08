@@ -61,7 +61,16 @@ A simple minecraft plugin for sending commands to a server
   - Make special note of the space before the first `;|;` this is important because otherwise the `batch` command can not be recognized
   - a seperator at the end is not necessary but does not affect the outcome, the seperator after the `batch` command is necessary
   - If you batch multiple commands which receive input the output comes line-by-line in the order of the commands in the batching command
-
+- `spawnBossBar <name> <text>`
+  - `<name>: the name which can later be used to change the boss bar`
+  - `<text>: the thex which is above the boss bar`
+- `editBossBar <command:string> <name:string> ?text:string? ?color:string? ?value:float?`
+  - `<command> Which edit command should be executed, possible values are`
+    - `text : Edit the text which is display, the ?text? argument needs to be set`
+    - `color: Edit the color of the bossBar ?color? argument needs to be set`
+    - `value: Edit the value of the bossbar ?value? argument needs to be set`
+    - `style: Edit the style of the bossbar ?style? argument need to bet set`
+    
 ## Argument type
 
 ## Positional Arguments
