@@ -72,6 +72,7 @@ A simple minecraft plugin for sending commands to a server
     - `style: Edit the style of the bossbar ?style? argument need to bet set`
 - `pollChat`
   - `Returns all chat messsages since the last poll seperated by |<-->|`
+- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> <rotation:int>`
 ## Argument type
 
 ## Positional Arguments
