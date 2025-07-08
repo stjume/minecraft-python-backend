@@ -4,18 +4,23 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import javax.xml.xpath.XPathEvaluationResult;
+import java.util.Arrays;
+import java.util.HashMap;
+
 public class SetPlayerPos extends Command {
 
     private int x;
     private int y;
     private int z;
     private int rot;
+    private boolean setRot;
     private int playerIndex;
 
     public SetPlayerPos(String command ){
         String[] parts = command.split(" ");
 
-        if(parts.length < 6) {
+        if(parts.length < 5) {
             this.valid = false;
             return;
         }
@@ -25,9 +30,19 @@ public class SetPlayerPos extends Command {
             this.x = Integer.parseInt(parts[2]);
             this.y = Integer.parseInt(parts[3]);
             this.z = Integer.parseInt(parts[4]);
-            this.rot = Integer.parseInt(parts[5]);
         } catch (Exception e) {
             this.valid = false;
+        }
+
+        ArgumentParser parser = new ArgumentParser();
+
+        parser.addArgument("rot", Integer::parseInt);
+
+        HashMap<String,ArgumentParser.ArgumentResult> result = parser.parse(Arrays.copyOfRange(parts,5, parts.length));
+
+        this.setRot = !result.get("rot").isNull();
+        if(this.setRot) {
+            this.rot = result.get("rot").asInt();
         }
     }
 
@@ -42,7 +57,11 @@ public class SetPlayerPos extends Command {
 
             Player player = players[playerIndex];
             Location loc = new Location(player.getWorld(), this.x, this.y, this.z);
-            loc.setYaw(this.rot);
+            if(!this.setRot) {
+                loc.setYaw(player.getLocation().getYaw());
+            }else {
+                loc.setYaw(this.rot);
+            }
             player.teleport(loc);
         });
 
