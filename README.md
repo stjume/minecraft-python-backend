@@ -70,6 +70,9 @@ A simple minecraft plugin for sending commands to a server
     - `color: Edit the color of the bossBar ?color? argument needs to be set`
     - `value: Edit the value of the bossbar ?value? argument needs to be set`
     - `style: Edit the style of the bossbar ?style? argument need to bet set`
+- `deleteBossBar <name:string>`
+  - deletes the boss bar
+  - `<name>` the name of the boss bar
 - `pollChat`
   - `Returns all chat messsages since the last poll seperated by |<-->|`
 - `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> ?rotation:int?`
