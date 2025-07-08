@@ -29,6 +29,8 @@ public class CommandFactory {
 
         this.commands.put("spawnBossBar", SpawnBossBar::new);
         this.commands.put("editBossBar", EditBossBar::new);
+
+        this.commands.put("pollChat", PollChat::new);
     }
 
     public Command build(String command) {

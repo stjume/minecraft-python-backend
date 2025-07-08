@@ -3,6 +3,9 @@ package org.sk.skMinecraft;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.sk.skMinecraft.commands.Command;
 
@@ -12,14 +15,17 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 
-public final class SkMinecraft extends JavaPlugin {
+public final class SkMinecraft extends JavaPlugin implements Listener {
 
     private Thread tcpListenerThread;
     private ServerSocket serverSocket;
 
     @Override
     public void onEnable() {
+        CentralResourceHandler.init();
+        getServer().getPluginManager().registerEvents(this, this);
         startTcpListener();
     }
 
@@ -48,6 +54,11 @@ public final class SkMinecraft extends JavaPlugin {
             }
         });
         tcpListenerThread.start();
+    }
+
+    @EventHandler
+    public void onPlayerChat(AsyncPlayerChatEvent event) {
+        CentralResourceHandler.addChatMessage(event.getMessage());
     }
 
     private void stopTcpListener() {
