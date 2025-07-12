@@ -2,6 +2,7 @@ package org.sk.skMinecraft.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 public class GetPlayer extends Command {
@@ -34,11 +35,13 @@ public class GetPlayer extends Command {
         Player target = players[playerIndex];
         // String name = target.getDisplayName();
         String name = target.getName();
+        Block looking_at = target.getTargetBlock(null, 100);
         Location loc = target.getLocation();
         int x = loc.getBlockX();
         int y = loc.getBlockY();
         int z = loc.getBlockZ();
         int rotation = (int)loc.getYaw();
-        writer.println(playerIndex + " " + name + " " + x + " " + y + " " + z + " " + rotation);
+        boolean sneak = target.isSneaking();
+        writer.println(playerIndex + " " + name + " " + x + " " + y + " " + z + " " + rotation + " " + looking_at.getType().name() + " " + sneak);
     }
 }
