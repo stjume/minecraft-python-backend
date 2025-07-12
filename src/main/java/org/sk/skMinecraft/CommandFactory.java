@@ -21,6 +21,7 @@ public class CommandFactory {
         this.commands.put("chatCommand", ChatCommand::new);
 
         this.commands.put("spawnEntity", SpawnEntity::new);
+        this.commands.put("editEntity", EditEntity::new);
 
         this.commands.put("addInv", AddInventory::new);
         this.commands.put("getInv", GetInventory::new);

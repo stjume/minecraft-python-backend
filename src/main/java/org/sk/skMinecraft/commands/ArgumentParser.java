@@ -37,6 +37,8 @@ public class ArgumentParser {
         public float asFloat() {
             return (Float)value;
         }
+
+        public Object get() {return this.value;}
     }
 
     private record argument(Function<String, Object> parser, Object defaultValue) {}
