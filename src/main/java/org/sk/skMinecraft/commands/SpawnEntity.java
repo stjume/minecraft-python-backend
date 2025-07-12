@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.sk.skMinecraft.CentralResourceHandler;
 
 public class SpawnEntity extends Command{
 
@@ -36,6 +37,7 @@ public class SpawnEntity extends Command{
             World world = Bukkit.getWorlds().getFirst(); // default world
             Location loc = new Location(world, x, y, z);
             Entity entity = world.spawnEntity(loc, this.type);
+            CentralResourceHandler.addEntity(entity.getUniqueId().toString(), entity);
 
             writer.println(entity.getUniqueId());
         });
