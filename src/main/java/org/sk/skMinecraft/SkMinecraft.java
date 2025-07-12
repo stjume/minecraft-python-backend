@@ -79,7 +79,6 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
-
         ) {
             CommandFactory commandFactory = new CommandFactory();
 

@@ -2,7 +2,7 @@
 
 A simple minecraft plugin for sending commands to a server
 
-## Protocal
+## Protocol
 
 - `setBlock <x:int> <y:int> <z:int> <blockid:String>` Set a block at a location
   - `<x> <y> <z>` position of the block
