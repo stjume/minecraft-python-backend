@@ -5,3 +5,4 @@
 - [ ] batch api
 - [ ] getPlayer command extends by looking_at and sneak
 - [ ] editEntity command
+- [ ] setPlayerStat command

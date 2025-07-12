@@ -22,6 +22,8 @@ A simple minecraft plugin for sending commands to a server
   - `example:`
     - `SENT:getPlayer 0`
     - `RECEIVED:0 ThisRyan 39 83 72 17 STONE false`
+- `setPlayerStat <type:string> <playerIndex:int> <value:double>`
+  - `type` can be one of `MAX_HEALTH`, `HEALTH`, `FOOD_LEVEL`, `SATURATION`
 - `postChat <message:string>` posts a message to chat
   - `<message>` is the message which should be posted, everything after the `postChat` is interpreted as the message
   - `example:` This example post the Message "Hello World my name is Adrian" to the chat
