@@ -17,10 +17,11 @@ A simple minecraft plugin for sending commands to a server
     - `RECEIVED:DEEPSLATE`
 - `getPlayer <index:int>` gets information about a player
   - `<index:int>` the index of the online Player
-  - `returns`: `<index:int> <name:String> <x:int> <y:int> <z:int> <rotation:int>`
+  - `returns`: `<index:int> <name:String> <x:int> <y:int> <z:int> <rotation:int> <looking_at_block:String> <sneak:boolean>`
+  - If the player is not looking at anything the looking at will be AIR
   - `example:`
     - `SENT:getPlayer 0`
-    - `RECEIVED:0 ThisRyan 39 83 72 17`
+    - `RECEIVED:0 ThisRyan 39 83 72 17 STONE false`
 - `postChat <message:string>` posts a message to chat
   - `<message>` is the message which should be posted, everything after the `postChat` is interpreted as the message
   - `example:` This example post the Message "Hello World my name is Adrian" to the chat
@@ -33,6 +34,12 @@ A simple minecraft plugin for sending commands to a server
   - `example:`
     - `SENT:spawnEntity 10 10 10 Zombie`
     - `RECEIVED:ff568527-7c0c-4536-aed2-ef77429d61b8`
+- `editEntity <target:String> ?name:String? ?position:x;y;z? ?ai:boolean?`
+  - Edits a existing entity which was previously spawned by the `spawnEntity` command
+  - `target` is the uuid returned by `spawnEntity`
+  - if `name` is set the entites custom name is changed
+  - if `position` is set the entities position will be set to the given x,y,z coordinates
+  - the `ai` sets the ai of the entity, if its turned off the entity will not move.
 - `chatCommand <command:String>` Runs chat command in console
   - `<command>` is the command, everything after the `chatCommand` is interpreted as the command. It should not contain the /
   - `example:` This example will run the command `/say Hello from plugin!`
