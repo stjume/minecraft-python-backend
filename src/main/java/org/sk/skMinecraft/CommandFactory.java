@@ -34,6 +34,8 @@ public class CommandFactory {
         this.commands.put("pollChat", PollChat::new);
 
         this.commands.put("setPlayerPos", SetPlayerPos::new);
+
+        this.commands.put("validate", Validator::new);
     }
 
     public Command build(String command) {
