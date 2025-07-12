@@ -104,41 +104,4 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
             getLogger().severe("TCP client error: " + e.getMessage());
         }
     }
-
-    private void commandGetPlayer(PrintWriter writer, String[] parts) {
-            if(parts.length != 2) {
-                writer.println("error bad_args");
-                return;
-            }
-
-            try {
-                int index = Integer.parseInt(parts[1]);
-                Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
-                if(index < 0 || index >= players.length) {
-                    writer.println("error invalid_index");
-                    return;
-                }
-
-                Player target = players[index];
-                // String name = target.getDisplayName();
-                String name = target.getName();
-                Location loc = target.getLocation();
-                int x = loc.getBlockX();
-                int y = loc.getBlockY();
-                int z = loc.getBlockZ();
-                int rotation = (int)loc.getYaw();
-                writer.println(index + " " + name + " " + x + " " + y + " " + z + " " + rotation);
-            } catch (NumberFormatException e) {
-                writer.println("error bad_index");
-            }
-    }
-
-    private void commandPostToChat(PrintWriter writer, String[] parts) {
-        if(parts.length != 2) {
-            writer.println("error bad_args");
-            return;
-        }
-
-
-    }
  }
