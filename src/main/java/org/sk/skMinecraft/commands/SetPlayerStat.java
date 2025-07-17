@@ -11,7 +11,9 @@ public class SetPlayerStat extends Command {
         MAX_HEALTH,
         HEALTH,
         FOOD_LEVEL,
-        SATURATION
+        SATURATION,
+        XP_LEVEL,
+        XP_PROGRESS
     }
 
     private Type type;
@@ -56,7 +58,8 @@ public class SetPlayerStat extends Command {
                 case HEALTH -> target.setHealth(this.value);
                 case FOOD_LEVEL -> target.setFoodLevel((int)this.value);
                 case SATURATION -> target.setSaturation((int)this.value);
-
+                case XP_LEVEL -> target.setLevel((int)this.value);
+                case XP_PROGRESS -> target.setExp((float)this.value);
             }
         });
     }
