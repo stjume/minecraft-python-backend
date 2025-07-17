@@ -7,3 +7,4 @@
 - [ ] editEntity command
 - [ ] setPlayerStat command
 - [ ] setPlayerVelocity command
+- [ ] getEntity command

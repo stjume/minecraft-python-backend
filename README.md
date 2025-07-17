@@ -44,6 +44,9 @@ A simple minecraft plugin for sending commands to a server
   - if `name` is set the entites custom name is changed
   - if `position` is set the entities position will be set to the given x,y,z coordinates
   - the `ai` sets the ai of the entity, if its turned off the entity will not move.
+- `getEntity <target:String>`
+  - `<target>` needs to be the entity id returned by spawn Entity
+  - `returns: <target:String> <name:string> <x:int> <y:int> <z:int> <health:double>`
 - `chatCommand <command:String>` Runs chat command in console
   - `<command>` is the command, everything after the `chatCommand` is interpreted as the command. It should not contain the /
   - `example:` This example will run the command `/say Hello from plugin!`
