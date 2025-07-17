@@ -64,7 +64,7 @@ A simple minecraft plugin for sending commands to a server
     - `RECEIVED:`
 - `getInv <playerIndex:int>` Returns the inventory of a player
   - `<playerIndex>` Index of the player to query
-  - `returns`: A series of items of the following structure: `<index:int>:<materialname:String>;display_name@<displayname:String>:<amount:int>`, these are separated by spaces. Notably only inventory slots with content will be sent everything else can be assumed to be empty.
+  - `returns`: A series of items of the following structure: `<index:int>:<materialname:String>;<displayname:String>:<amount:int>`, these are separated by spaces. Notably only inventory slots with content will be sent everything else can be assumed to be empty.
   - `example:`
     - `SENT:getInv 0`
     - `RECEIVED:0:LILY_OF_THE_VALLEY:1 4:STONE_PRESSURE_PLATE:1 7:SCULK_SHRIEKER:1 11:REDSTONE:13 25:DISPENSER:1 29:TARGET:1`

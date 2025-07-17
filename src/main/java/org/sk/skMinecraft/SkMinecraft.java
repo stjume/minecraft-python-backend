@@ -91,7 +91,10 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
 
                 Command command_obj = commandFactory.build(command);
 
-                if(!command_obj.isValid()) continue;
+                if(!command_obj.isValid()) {
+                    System.out.println("Invalid");
+                    continue;
+                }
 
                 command_obj.setParameters(writer, this);
 

@@ -50,7 +50,7 @@ public class GetInventory extends Command {
                 assert meta != null;
                 result.append(i).append(":");
                 result.append(stack.getType().name());
-                result.append(";").append("display_name").append("@").append(meta.getDisplayName().replace(" ", ArgumentParser.spaceEscape));
+                result.append(";").append(meta.getDisplayName().replace(" ", ArgumentParser.spaceEscape));
                 result.append(":").append(stack.getAmount());
 
                 result.append(" ");
