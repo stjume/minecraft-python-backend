@@ -17,6 +17,7 @@ public class CommandFactory {
 
         this.commands.put("getPlayer", GetPlayer::new);
         this.commands.put("setPlayerStat", SetPlayerStat::new);
+        this.commands.put("setPlayerVelocity", SetPlayerVelocity::new);
 
         this.commands.put("postChat", PostChat::new);
         this.commands.put("chatCommand", ChatCommand::new);

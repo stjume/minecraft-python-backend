@@ -29,6 +29,8 @@ A simple minecraft plugin for sending commands to a server
   - `example:` This example post the Message "Hello World my name is Adrian" to the chat
     - `SENT:postChat Hello World my name is Adrian`
     - `RECEIVED:`
+  - `setPlayerVelocity <type:String> <playerIndex:int> <value:double>`
+    - `type` can be one of `UP`, `DOWN`, `BACK`,`LOOKING`
 - `spawnEntity <x:int> <y:int> <z:int> <entityid:String>`
   - `<x> <y> <z>` position
   - `<entityid>` a string with entity id full list can be cound here: [Entities](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)

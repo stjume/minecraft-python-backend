@@ -42,7 +42,6 @@ public class SetPlayerStat extends Command {
         Bukkit.getScheduler().runTask(this.plugin, () -> {
             Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
             if(playerIndex < 0 || playerIndex >= players.length) {
-                writer.println("error invalid_index");
                 return;
             }
 
