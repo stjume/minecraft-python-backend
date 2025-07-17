@@ -39,7 +39,9 @@ public class SpawnEntity extends Command{
             Entity entity = world.spawnEntity(loc, this.type);
             CentralResourceHandler.addEntity(entity.getUniqueId().toString(), entity);
 
-            writer.println(entity.getUniqueId());
+            String uuid = entity.getUniqueId().toString();
+            String output = GetEntity.informationString(uuid, entity);
+            writer.println(output);
         });
     }
 }

@@ -5,6 +5,6 @@
 - [ ] batch api
 - [X] getPlayer command extends by looking_at and sneak
 - [ ] editEntity command
-- [ ] setPlayerStat command
-- [ ] setPlayerVelocity command
+- [X] setPlayerStat command
+- [X] setPlayerVelocity command
 - [ ] getEntity command

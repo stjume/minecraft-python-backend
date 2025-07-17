@@ -23,6 +23,22 @@ public class GetEntity extends Command {
         this.target = parts[1];
     }
 
+    public static String informationString(String uuid, Entity ent) {
+        String name = ent.getCustomName();
+        Location loc = ent.getLocation();
+        int x = loc.getBlockX();
+        int y = loc.getBlockY();
+        int z = loc.getBlockZ();
+        double health = 0;
+        boolean ai = false;
+        if(ent instanceof LivingEntity lent) {
+            health = lent.getHealth();
+            ai = lent.hasAI();
+        }
+        String type = ent.getType().toString();
+        return uuid + " " + type + " " + name + " " + x + " " + y + " " + z + " " + health + " " + ai;
+    }
+
     @Override
     public void apply() {
         Bukkit.getScheduler().runTask(this.plugin, () -> {
@@ -41,16 +57,8 @@ public class GetEntity extends Command {
                 return;
             }
 
-            String name = ent.getCustomName();
-            Location loc = ent.getLocation();
-            int x = loc.getBlockX();
-            int y = loc.getBlockY();
-            int z = loc.getBlockZ();
-            double health = 0;
-            if(ent instanceof LivingEntity lent) {
-                health = lent.getHealth();
-            }
-            this.writer.println(this.target + " " + name + " " + x+ " " + y + " " + z + " " + health);
+            String output = GetEntity.informationString(this.target, ent);
+            this.writer.println(output);
         });
     }
 }
