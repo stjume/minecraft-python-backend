@@ -17,7 +17,7 @@ A simple minecraft plugin for sending commands to a server
     - `RECEIVED:DEEPSLATE`
 - `getPlayer <index:int>` gets information about a player
   - `<index:int>` the index of the online Player
-  - `returns`: `<index:int> <name:String> <x:int> <y:int> <z:int> <rotation:int> <looking_at_block:String> <sneak:boolean>`
+  - `returns`: `<index:int> <name:String> <x:int> <y:int> <z:int> <rotation:int> <looking_at_block:String> <sneak:boolean> <max_health:double> <health:double> <food_level:double> <saturation: double> <xp_level:int> <xp_progress:double>`
   - If the player is not looking at anything the looking at will be AIR
   - `example:`
     - `SENT:getPlayer 0`

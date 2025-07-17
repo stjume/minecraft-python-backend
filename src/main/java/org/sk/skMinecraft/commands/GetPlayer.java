@@ -2,6 +2,7 @@ package org.sk.skMinecraft.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
@@ -42,6 +43,14 @@ public class GetPlayer extends Command {
         int z = loc.getBlockZ();
         int rotation = (int)loc.getYaw();
         boolean sneak = target.isSneaking();
-        writer.println(playerIndex + " " + name + " " + x + " " + y + " " + z + " " + rotation + " " + looking_at.getType().name() + " " + sneak);
+        double maxhealth = target.getAttribute(Attribute.MAX_HEALTH).getBaseValue();
+        double health = target.getHealth();
+        double hunger = target.getFoodLevel();
+        double saturation = target.getSaturation();
+        double xp_level = target.getLevel();
+        double xp_progress = target.getExp();
+
+        writer.println(playerIndex + " " + name + " " + x + " " + y + " " + z + " " + rotation + " " + looking_at.getType().name() + " " + sneak
+                + " " + maxhealth + " " + health + " " + hunger + " " + saturation + " " + xp_level + " " + xp_progress);
     }
 }
