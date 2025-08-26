@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.sk.skMinecraft.CentralResourceHandler;
 
 import java.util.concurrent.ExecutionException;
 
@@ -42,18 +43,10 @@ public class GetEntity extends Command {
     @Override
     public void apply() {
         Bukkit.getScheduler().runTask(this.plugin, () -> {
-            Entity ent = null;
-            for (World world : Bukkit.getWorlds()) {
-                for (Entity entity : world.getEntities()) {
-                    if (entity.getUniqueId().toString().equals(this.target)) {
-                        ent = entity;
-                        break;
-                    }
-                }
-                if (ent != null) break;
-            }
+            Entity ent = CentralResourceHandler.getEntity(this.target);
 
             if (ent == null) {
+                this.writer.println("");
                 return;
             }
 
