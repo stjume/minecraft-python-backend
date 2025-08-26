@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.boss.KeyedBossBar;
 import org.bukkit.entity.Player;
 
@@ -31,7 +32,12 @@ public class SpawnBossBar extends Command {
     public void apply() {
         Bukkit.getScheduler().runTask(this.plugin, () -> {
             NamespacedKey key = new NamespacedKey(this.plugin, name);
-            KeyedBossBar bossBar = Bukkit.createBossBar(
+            KeyedBossBar bossBar = Bukkit.getBossBar(key);
+            if(bossBar != null) {
+                bossBar.removeAll();
+            }
+
+            bossBar = Bukkit.createBossBar(
                     key,
                     text,
                     BarColor.PURPLE,
