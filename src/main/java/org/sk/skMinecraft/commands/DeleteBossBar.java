@@ -26,8 +26,9 @@ public class DeleteBossBar extends Command {
 
             KeyedBossBar bossBar = Bukkit.getBossBar(key);
 
-            assert bossBar != null;
-            bossBar.removeAll();
+            if(bossBar != null) {
+               bossBar.removeAll();
+            }
         });
     }
 }
