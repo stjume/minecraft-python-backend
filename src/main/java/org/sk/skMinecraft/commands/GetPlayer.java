@@ -36,7 +36,11 @@ public class GetPlayer extends Command {
         Player target = players[playerIndex];
         // String name = target.getDisplayName();
         String name = target.getName();
-        Block looking_at = target.getTargetBlock(null, 100);
+        String looking_at = "AIR";
+        try {
+            looking_at = target.getTargetBlock(null, 100).getType().name();
+        }catch(Exception e){}
+        
         Location loc = target.getLocation();
         int x = loc.getBlockX();
         int y = loc.getBlockY();
@@ -50,7 +54,7 @@ public class GetPlayer extends Command {
         double xp_level = target.getLevel();
         double xp_progress = target.getExp();
 
-        writer.println(playerIndex + " " + name + " " + x + " " + y + " " + z + " " + rotation + " " + looking_at.getType().name() + " " + sneak
+        writer.println(playerIndex + " " + name + " " + x + " " + y + " " + z + " " + rotation + " " + looking_at + " " + sneak
                 + " " + maxhealth + " " + health + " " + hunger + " " + saturation + " " + xp_level + " " + xp_progress);
     }
 }
