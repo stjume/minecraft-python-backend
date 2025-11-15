@@ -24,6 +24,9 @@ public class EditEntity extends Command {
 
     private String name;
 
+    private boolean setHealth;
+    private double health;
+
     public EditEntity(String command) {
         String[] parts = command.split(" ");
 
@@ -39,6 +42,7 @@ public class EditEntity extends Command {
         parser.addArgument("ai", Boolean::parseBoolean);
         parser.addArgument("position", arg-> Arrays.stream(arg.split(";")).map(Integer::parseInt).collect(Collectors.toList()));
         parser.addArgument("name", ArgumentParser.StringParser);
+        parser.addArgument("health", Double::parseDouble);
 
         HashMap<String,ArgumentParser.ArgumentResult> result = parser.parse(Arrays.copyOfRange(parts,2, parts.length));
 
@@ -56,6 +60,12 @@ public class EditEntity extends Command {
         }
 
         this.name = result.get("name").asString();
+
+        this.setHealth = !result.get("health").isNull();
+        if(this.setHealth) {
+            this.health = result.get("health").asInt();
+        }
+        
     }
 
     @Override
@@ -76,9 +86,12 @@ public class EditEntity extends Command {
                 return;
             }
 
-            if(this.setAi) {
-                if (ent instanceof LivingEntity living) {
+            if (ent instanceof LivingEntity living) {
+                if(this.setAi) {
                     living.setAI(this.ai);
+                }
+                if(this.setHealth) {
+                    living.setHealth(this.health);
                 }
             }
 
