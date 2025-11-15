@@ -37,6 +37,7 @@ public class EditBossBar extends Command {
     }
 
     EditType type;
+    String typeName;
     String name;
     String text;
     BarColor color;
@@ -52,6 +53,7 @@ public class EditBossBar extends Command {
         }
 
         type = typeFromText(parts[1]);
+        this.typeName = parts[1];
         this.name = parts[2];
 
         ArgumentParser parser = new ArgumentParser();
@@ -81,6 +83,7 @@ public class EditBossBar extends Command {
                 case EditType.COLOR -> bossbar.setColor(this.color);
                 case EditType.VALUE -> bossbar.setProgress(this.value);
                 case EditType.STYLE -> bossbar.setStyle(this.style);
+                case EditType.UNKOWN -> System.out.println("BossBar: Unkown edit type" + this.typeName);
             }
 
         });
