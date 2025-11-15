@@ -43,7 +43,7 @@ public class CommandFactory {
     }
 
     public Command build(String command) {
-        int firstSpace = command.indexOf(" ");
+        int firstSpace = command.indexOf(SkMinecraft.seperator);
         String commandName = firstSpace == -1 ? command : command.substring(0, firstSpace);
         return this.commands.get(commandName).apply(command);
     }
