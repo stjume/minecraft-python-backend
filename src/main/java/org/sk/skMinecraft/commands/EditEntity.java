@@ -5,7 +5,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
-import org.sk.skMinecraft.CentralResourceHandler;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -53,7 +52,8 @@ public class EditEntity extends Command {
 
         this.setPosition = !result.get("position").isNull();
         if(this.setPosition) {
-            List<Integer> positions = (List<Integer>)result.get("position").get();
+            @SuppressWarnings("unchecked")
+            List<Integer> positions = (List<Integer>)result.get("position").get();;
             this.x = positions.get(0);
             this.y = positions.get(1);
             this.z = positions.get(2);
