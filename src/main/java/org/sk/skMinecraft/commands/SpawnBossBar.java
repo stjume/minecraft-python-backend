@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
-import org.bukkit.boss.BossBar;
 import org.bukkit.boss.KeyedBossBar;
 import org.bukkit.entity.Player;
 import org.sk.skMinecraft.SkMinecraft;
@@ -19,7 +18,7 @@ public class SpawnBossBar extends Command {
 
         this.name = "";
         this.text = "";
-        if(parts.length < 2) {
+        if (parts.length < 2) {
 
             this.valid = false;
             return;
@@ -34,7 +33,7 @@ public class SpawnBossBar extends Command {
         Bukkit.getScheduler().runTask(this.plugin, () -> {
             NamespacedKey key = new NamespacedKey(this.plugin, name);
             KeyedBossBar bossBar = Bukkit.getBossBar(key);
-            if(bossBar != null) {
+            if (bossBar != null) {
                 bossBar.removeAll();
             }
 
@@ -42,8 +41,7 @@ public class SpawnBossBar extends Command {
                     key,
                     text,
                     BarColor.PURPLE,
-                    BarStyle.SOLID
-            );
+                    BarStyle.SOLID);
 
             for (Player player : Bukkit.getOnlinePlayers()) {
                 bossBar.addPlayer(player);
