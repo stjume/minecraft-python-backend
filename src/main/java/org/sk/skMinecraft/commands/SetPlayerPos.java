@@ -3,8 +3,8 @@ package org.sk.skMinecraft.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.sk.skMinecraft.SkMinecraft;
 
-import javax.xml.xpath.XPathEvaluationResult;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -18,7 +18,7 @@ public class SetPlayerPos extends Command {
     private int playerIndex;
 
     public SetPlayerPos(String command ){
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         if(parts.length < 5) {
             this.valid = false;

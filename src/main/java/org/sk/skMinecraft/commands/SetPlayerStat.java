@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class SetPlayerStat extends Command {
 
@@ -21,7 +22,7 @@ public class SetPlayerStat extends Command {
     private double value;
 
     public SetPlayerStat(String command){
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         if(parts.length < 4) {
             this.valid = false;

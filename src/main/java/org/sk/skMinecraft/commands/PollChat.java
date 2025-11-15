@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.sk.skMinecraft.CentralResourceHandler;
+import org.sk.skMinecraft.SkMinecraft;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class PollChat extends Command {
         Bukkit.getScheduler().runTask(plugin, () -> {
             ArrayList<String> messages = CentralResourceHandler.getChatMessages();
 
-            String output = String.join("|<-->|", messages);
+            String output = String.join(SkMinecraft.seperator, messages);
             this.writer.println(output);
         });
     }

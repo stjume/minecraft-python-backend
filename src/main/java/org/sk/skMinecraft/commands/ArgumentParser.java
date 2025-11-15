@@ -9,7 +9,6 @@ public class ArgumentParser {
 
     public static Function<String, Object> StringParser = (arg) -> arg;
 
-    public static String spaceEscape = "|&s&|";
 
     public static class ArgumentResult {
         Object value;
@@ -74,8 +73,6 @@ public class ArgumentParser {
                 result.put(arg_name, new ArgumentResult(true));
                 continue;
             }
-
-            arg[1] = arg[1].replace(spaceEscape, " ");
 
             if (arg.length != 2 || !arguments.containsKey(arg_name)) {
                 continue;

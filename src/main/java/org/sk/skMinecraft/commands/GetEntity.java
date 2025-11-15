@@ -2,19 +2,17 @@ package org.sk.skMinecraft.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.sk.skMinecraft.CentralResourceHandler;
-
-import java.util.concurrent.ExecutionException;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class GetEntity extends Command {
 
     private String target;
 
     public GetEntity(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         if(parts.length < 2) {
             this.valid = false;
@@ -37,7 +35,9 @@ public class GetEntity extends Command {
             ai = lent.hasAI();
         }
         String type = ent.getType().toString();
-        return uuid + " " + type + " " + name + " " + x + " " + y + " " + z + " " + health + " " + ai;
+
+        String result = SkMinecraft.joinWithSeperator(uuid, type, name, x, y, z, health, ai);    
+        return result;
     }
 
     @Override

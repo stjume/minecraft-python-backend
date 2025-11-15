@@ -4,13 +4,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class SetBlock extends Command {
     private int x,y,z;
     private Material material;
 
     public SetBlock(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         this.valid = true;
         try {

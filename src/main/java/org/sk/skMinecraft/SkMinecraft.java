@@ -15,12 +15,26 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.List;
 
 public final class SkMinecraft extends JavaPlugin implements Listener {
 
     private Thread tcpListenerThread;
     private ServerSocket serverSocket;
+
+    public static String seperator = "𝇉";
+
+    public static String joinWithSeperator(Object... args) {
+        String result = "";
+
+        for(int i = 0;i < args.length;i++){
+            result += args[i].toString();
+            if(i < args.length - 1) {
+                result += SkMinecraft.seperator;
+            }
+        }  
+
+        return result;
+    } 
 
     @Override
     public void onEnable() {

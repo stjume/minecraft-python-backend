@@ -7,6 +7,7 @@ import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.boss.KeyedBossBar;
 import org.bukkit.entity.Player;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class SpawnBossBar extends Command {
 
@@ -14,7 +15,7 @@ public class SpawnBossBar extends Command {
     private String text;
 
     public SpawnBossBar(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         this.name = "";
         this.text = "";

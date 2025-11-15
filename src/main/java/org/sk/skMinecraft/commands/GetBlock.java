@@ -3,13 +3,14 @@ package org.sk.skMinecraft.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class GetBlock extends Command{
 
     private int x,y,z;
 
     public GetBlock(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
         try {
             this.x = Integer.parseInt(parts[1]);
             this.y = Integer.parseInt(parts[2]);

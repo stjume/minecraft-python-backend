@@ -5,13 +5,12 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.boss.KeyedBossBar;
 import org.sk.skMinecraft.SkMinecraft;
 
-public class DeleteBossBar extends Command {
+public class GetBossBar extends Command {
 
-    private String name;
+    String name;
 
-    public DeleteBossBar(String command) {
+    public GetBossBar(String command) {
         String[] parts = command.split(SkMinecraft.seperator);
-
         if(parts.length != 2) {
             this.valid = false;
             return;
@@ -22,14 +21,18 @@ public class DeleteBossBar extends Command {
 
     @Override
     public void apply() {
-        Bukkit.getScheduler().runTask(plugin, () -> {
-            NamespacedKey key = new NamespacedKey(this.plugin, this.name);
+        Bukkit.getScheduler().runTask(this.plugin, () -> {
+            NamespacedKey key = new NamespacedKey(this.plugin, name);
 
-            KeyedBossBar bossBar = Bukkit.getBossBar(key);
-
-            if(bossBar != null) {
-               bossBar.removeAll();
+            KeyedBossBar bossbar = Bukkit.getBossBar(key);
+            if(bossbar == null) {
+                this.writer.println("");
+                return;
             }
+
+            
         });
     }
+    
+    
 }

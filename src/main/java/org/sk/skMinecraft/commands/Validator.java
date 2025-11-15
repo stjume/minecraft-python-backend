@@ -1,7 +1,7 @@
 package org.sk.skMinecraft.commands;
 
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class Validator extends Command {
 
@@ -14,7 +14,7 @@ public class Validator extends Command {
     private String name;
 
     public Validator(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         if(parts.length < 3) {
             this.valid = false;

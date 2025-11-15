@@ -1,21 +1,18 @@
 package org.sk.skMinecraft.commands;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import static org.bukkit.Bukkit.getOnlinePlayers;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class GetInventory extends Command {
 
     private int playerIndex;
 
     public GetInventory(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         if(parts.length < 2) {
             this.valid = false;
@@ -50,10 +47,12 @@ public class GetInventory extends Command {
                 assert meta != null;
                 result.append(i).append(":");
                 result.append(stack.getType().name());
-                result.append(";").append(meta.getDisplayName().replace(" ", ArgumentParser.spaceEscape));
+                result.append(";").append(meta.getDisplayName());
                 result.append(":").append(stack.getAmount());
-
-                result.append(" ");
+                
+                if(i < inv.getSize() - 1) {
+                    result.append(SkMinecraft.seperator);
+                }
             }
 
             this.writer.println(result.toString().trim());

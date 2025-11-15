@@ -6,6 +6,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.sk.skMinecraft.CentralResourceHandler;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class SpawnEntity extends Command{
 
@@ -13,7 +14,7 @@ public class SpawnEntity extends Command{
     private EntityType type;
 
     public SpawnEntity(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         if(parts.length != 5) {
             this.valid = false;

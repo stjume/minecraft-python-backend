@@ -5,13 +5,14 @@ import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class GetPlayer extends Command {
 
     private int playerIndex;
 
     public GetPlayer(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         if(parts.length != 2) {
             this.valid = false;
@@ -54,7 +55,23 @@ public class GetPlayer extends Command {
         double xp_level = target.getLevel();
         double xp_progress = target.getExp();
 
-        writer.println(playerIndex + " " + name + " " + x + " " + y + " " + z + " " + rotation + " " + looking_at + " " + sneak
-                + " " + maxhealth + " " + health + " " + hunger + " " + saturation + " " + xp_level + " " + xp_progress);
+        String result = SkMinecraft.joinWithSeperator(
+            playerIndex,
+            name,
+            x,
+            y,
+            z,
+            rotation,
+            looking_at,
+            sneak,
+            maxhealth,
+            health,
+            hunger,
+            saturation,
+            xp_level,
+            xp_progress
+        );
+
+        writer.println(result);
     }
 }

@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.sk.skMinecraft.SkMinecraft;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ public class AddInventory extends Command{
     private boolean unbreakable;
 
     public AddInventory(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         if(parts.length < 4) {
             this.valid = false;

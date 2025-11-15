@@ -3,6 +3,7 @@ package org.sk.skMinecraft.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
+import org.sk.skMinecraft.SkMinecraft;
 
 public class SetPlayerVelocity extends Command {
 
@@ -18,7 +19,7 @@ public class SetPlayerVelocity extends Command {
     private double strength;
 
     public SetPlayerVelocity(String command) {
-        String[] parts = command.split(" ");
+        String[] parts = command.split(SkMinecraft.seperator);
 
         if(parts.length < 4) {
             this.valid = false;
