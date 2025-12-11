@@ -24,7 +24,13 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
         String result = "";
 
         for(int i = 0;i < args.length;i++){
-            result += args[i].toString();
+
+            Object arg_i = args[i];
+            if (arg_i == null){
+                arg_i = "null";
+            }
+
+            result += arg_i.toString();
             if(i < args.length - 1) {
                 result += SkMinecraft.seperator;
             }
