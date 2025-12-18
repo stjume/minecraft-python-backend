@@ -33,6 +33,7 @@ mvn
 - `getPlayer <index:int>` gets information about a player. [Details](#command-getplayer)
 - `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> ?rotation:int?` Set the player position [Details](#command-setplayerpos)
 - `setPlayerStat <type:string> <playerIndex:int> <value:double>` Set a player stat [Details](#command-setplayerstat)
+- `showTitle <playerIndex:int> <title:String> <subtitle:String> <fadeIn:int> <stay:int> <fadeOut:int>` Show a Title to players [Details](#command-showtitle)
 
 #### Inventory
 
@@ -168,6 +169,26 @@ setPlayerStat MAX_HEALTH 0 10
 
 ```bash
 setPlayerVelocity UP 0 1
+
+```
+
+### Command: showTitle
+
+- `showTitle <playerIndex:int> <title:String> <subtitle:String> <fadeIn:int> <stay:int> <fadeOut:int>`
+
+#### Args
+
+- `playerIndex` Index of a player, if the index is smaller then 0 the title is shown to all players
+- `title` The title to show
+- `subtitle` The subtitle to show
+- `fadeIn` The time it takes for the title to fade in, in ticks
+- `stay` The time it takes for the title to stay, in ticks
+- `fadeOut` The time it takes for the title to fade out, in ticks
+
+#### Example
+
+```bash
+showTitle𝇉Das ist ein Title𝇉Mit einem subtitle𝇉200𝇉200𝇉200
 
 ```
 
