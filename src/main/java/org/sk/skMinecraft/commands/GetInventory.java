@@ -44,15 +44,16 @@ public class GetInventory extends Command {
 
                 ItemMeta meta = stack.getItemMeta();
 
+                if(i != 0) {
+                    result.append(SkMinecraft.seperator);
+                }
+
                 assert meta != null;
                 result.append(i).append(":");
                 result.append(stack.getType().name());
                 result.append(";").append(meta.getDisplayName());
                 result.append(":").append(stack.getAmount());
                 
-                if(i < inv.getSize() - 1) {
-                    result.append(SkMinecraft.seperator);
-                }
             }
 
             this.writer.println(result.toString().trim());
