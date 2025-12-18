@@ -40,6 +40,8 @@ public class CommandFactory {
         this.commands.put("setPlayerPos", SetPlayerPos::new);
 
         this.commands.put("validate", Validator::new);
+
+        this.commands.put("showTitle", ShowTitle::new);
     }
 
     public Command build(String command) {
