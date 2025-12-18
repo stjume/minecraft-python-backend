@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.sk.skMinecraft.commands.Command;
+import org.sk.skMinecraft.data.ChatMessage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -75,7 +76,8 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        CentralResourceHandler.addChatMessage(event.getMessage());
+        ChatMessage message = new ChatMessage(event.getPlayer(), event.getMessage());
+        CentralResourceHandler.addChatMessage(message);
     }
 
     private void stopTcpListener() {

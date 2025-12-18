@@ -308,13 +308,13 @@ chatCommand say Hello from plugin!
 
 #### Return
 
-- All chat messsages since the last poll seperated by `|<-->|`
+- A list of block of `<playername>:<message>` seperated by `𝇉`
 
 #### Example
 
 ```bash
 pollChat
-Hallo|<-->|A second message|<-->|Last message
+Player1:Hallo𝇉Player1:A second message𝇉Player2:Last message
 ```
 
 ### Command: spawnEntity
