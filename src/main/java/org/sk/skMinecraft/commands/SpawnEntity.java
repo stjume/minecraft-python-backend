@@ -12,6 +12,7 @@ import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 public class SpawnEntity extends Command{
 
     private int x,y,z;
+    private World world;
     private EntityType type;
 
     public SpawnEntity(StringCommand command) {
@@ -20,7 +21,9 @@ public class SpawnEntity extends Command{
         parser.addPositionalArguments(
             ArgumentParser.IntParser,
             ArgumentParser.IntParser,
-            ArgumentParser.IntParser
+            ArgumentParser.IntParser,
+            ArgumentParser.StringParser,
+            ArgumentParser.StringParser
         );
 
         ParseResult result = parser.parse(command.arguments());
@@ -31,18 +34,20 @@ public class SpawnEntity extends Command{
         }
 
         this.x = result.getPositional(0);
-        this.y = result.getPositional(2);
+        this.y = result.getPositional(1);
         this.z = result.getPositional(2);
 
-        String typeName = result.getPositional(3);
+        String worldName = result.getPositional(3);
+        this.world = Bukkit.getWorld(worldName);
+
+        String typeName = result.getPositional(4);
         this.type = EntityType.valueOf(typeName.toUpperCase());
     }
 
     @Override
     public void apply() {
         Bukkit.getScheduler().runTask(this.plugin, () -> {
-            World world = Bukkit.getWorlds().getFirst(); // default world
-            Location loc = new Location(world, x, y, z);
+            Location loc = new Location(this.world, x, y, z);
             Entity entity = world.spawnEntity(loc, this.type);
             CentralResourceHandler.addEntity(entity.getUniqueId().toString(), entity);
 
