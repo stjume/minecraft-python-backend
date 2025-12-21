@@ -3,7 +3,8 @@ package org.sk.skMinecraft.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
-import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class SetPlayerVelocity extends Command {
 
@@ -18,20 +19,26 @@ public class SetPlayerVelocity extends Command {
     private int playerIndex;
     private double strength;
 
-    public SetPlayerVelocity(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
+    public SetPlayerVelocity(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
 
-        if(parts.length < 4) {
+        parser.addPositionalArguments(
+            ArgumentParser.StringParser,
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser,
+            ArgumentParser.DoubleParser
+        );
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
-        try {
-            this.type = Type.valueOf(parts[1]);
-            this.playerIndex = Integer.parseInt(parts[2]);
-            this.strength = Double.parseDouble(parts[3]);
-        }catch (Exception e) {
-            this.valid = false;
-        }
+
+        this.type = Type.valueOf(result.getPositional(0));
+        this.playerIndex = result.getPositional(1);
+        this.strength = result.getPositional(2);
     }
 
     @Override

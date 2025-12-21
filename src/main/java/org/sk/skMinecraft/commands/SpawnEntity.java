@@ -6,30 +6,36 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.sk.skMinecraft.CentralResourceHandler;
-import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class SpawnEntity extends Command{
 
     private int x,y,z;
     private EntityType type;
 
-    public SpawnEntity(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
+    public SpawnEntity(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
 
-        if(parts.length != 5) {
+        parser.addPositionalArguments(
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser
+        );
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
 
-        try {
-            this.x = Integer.parseInt(parts[1]);
-            this.y = Integer.parseInt(parts[2]);
-            this.z = Integer.parseInt(parts[3]);
-        } catch (NumberFormatException e) {
-            this.valid = false;
-        }
+        this.x = result.getPositional(0);
+        this.y = result.getPositional(2);
+        this.z = result.getPositional(2);
 
-        this.type = EntityType.valueOf(parts[4].toUpperCase());
+        String typeName = result.getPositional(3);
+        this.type = EntityType.valueOf(typeName.toUpperCase());
     }
 
     @Override

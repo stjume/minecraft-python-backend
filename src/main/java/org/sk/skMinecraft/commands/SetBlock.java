@@ -4,29 +4,40 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class SetBlock extends Command {
     private int x,y,z;
     private Material material;
 
-    public SetBlock(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
+    public SetBlock(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
 
-        this.valid = true;
-        try {
-            this.x = Integer.parseInt(parts[1]);
-            this.y = Integer.parseInt(parts[2]);
-            this.z = Integer.parseInt(parts[3]);
-        } catch (NumberFormatException e) {
+        parser.addPositionalArguments(
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser,
+            ArgumentParser.StringParser
+        );
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
+            return;
         }
 
-        String blockId = parts[4].toUpperCase();
+        this.x = result.getPositional(0);
+        this.y = result.getPositional(1);
+        this.z = result.getPositional(2);
+
+        String blockId = result.getPositional(3);
         this.material = Material.matchMaterial(blockId);
 
         if (this.material == null || !this.material.isBlock()) {
             this.valid = false;
+            return;
         }
     }
 

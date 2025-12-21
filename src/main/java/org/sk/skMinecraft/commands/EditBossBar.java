@@ -5,10 +5,8 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.KeyedBossBar;
-import org.sk.skMinecraft.SkMinecraft;
-
-import java.util.Arrays;
-import java.util.HashMap;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class EditBossBar extends Command {
 
@@ -44,31 +42,34 @@ public class EditBossBar extends Command {
     float value;
     BarStyle style;
 
-    public EditBossBar(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
-
-        if(parts.length < 3) {
-            this.valid = false;
-            return;
-        }
-
-        type = typeFromText(parts[1]);
-        this.typeName = parts[1];
-        this.name = parts[2];
-
+    public EditBossBar(StringCommand command) {
         ArgumentParser parser = new ArgumentParser();
 
-        parser.addArgument("text", ArgumentParser.StringParser, "");
-        parser.addArgument("color", ArgumentParser.StringParser, "PURPLE");
-        parser.addArgument("value", Float::parseFloat, 0.0f);
-        parser.addArgument("style", ArgumentParser.StringParser, "SOLID");
+        parser.addPositionalArguments(
+            ArgumentParser.StringParser,
+            ArgumentParser.StringParser
+        );
+            
+        parser.addOptionalArgument("text", ArgumentParser.StringParser, "");
+        parser.addOptionalArgument("color", ArgumentParser.StringParser, "PURPLE");
+        parser.addOptionalArgument("value", Float::parseFloat, 0.0f);
+        parser.addOptionalArgument("style", ArgumentParser.StringParser, "SOLID");
 
-        HashMap<String,ArgumentParser.ArgumentResult> result = parser.parse(Arrays.copyOfRange(parts,3, parts.length));
+        ParseResult result = parser.parse(command.arguments());
 
-        this.text = result.get("text").asString();
-        this.color = BarColor.valueOf(result.get("color").asString().toUpperCase());
-        this.value = result.get("value").asFloat();
-        this.style = BarStyle.valueOf(result.get("style").asString().toUpperCase());
+        this.typeName = result.getPositional(0);
+        this.type = typeFromText(this.typeName);
+        this.name = result.getPositional(01);
+
+        this.text = result.getOptional("text");
+
+        String colorName = result.getOptional("color");
+        this.color = BarColor.valueOf(colorName.toUpperCase());
+
+        this.value = result.getOptional("value");
+
+        String styleName = result.getOptional("style");
+        this.style = BarStyle.valueOf(styleName.toUpperCase());
     }
 
     @Override

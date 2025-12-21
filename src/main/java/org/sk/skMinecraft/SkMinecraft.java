@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 
 public final class SkMinecraft extends JavaPlugin implements Listener {
 
@@ -20,6 +21,7 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
     private ServerSocket serverSocket;
 
     public static String seperator = "𝇉";
+    public record StringCommand(String name, String[] arguments) {};
 
     public static String joinWithSeperator(Object... args) {
         String result = "";
@@ -39,6 +41,11 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
 
         return result;
     } 
+
+    public static StringCommand splitCommand(String command) {
+        String[] parts = command.split(SkMinecraft.seperator);
+        return new StringCommand(parts[0], Arrays.copyOfRange(parts, 1, parts.length));
+    }
 
     @Override
     public void onEnable() {
@@ -108,7 +115,8 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
 
                 getLogger().info("Received: " + command);
 
-                Command commandObject = commandFactory.build(command);
+                StringCommand stringCommand = splitCommand(command);
+                Command commandObject = commandFactory.build(stringCommand);
 
                 if(commandObject == null) continue;
 
