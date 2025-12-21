@@ -64,7 +64,7 @@ public class ArgumentParser {
         }
 
         public boolean getFlag(String name) {
-            return !optionals.get(name).asBool();
+            return optionals.get(name).asBool();
         }
         
         public boolean isSet(String name) {
