@@ -6,6 +6,8 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,46 +29,46 @@ public class EditEntity extends Command {
     private boolean setHealth;
     private double health;
 
-    public EditEntity(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
+    public EditEntity(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
 
-        if(parts.length < 2) {
+        parser.addPositionalArguments(
+            ArgumentParser.StringParser
+        );
+
+        parser.addOptionalArgument("ai", Boolean::parseBoolean);
+        parser.addOptionalArgument("position", arg-> Arrays.stream(arg.split(";")).map(Integer::parseInt).collect(Collectors.toList()));
+        parser.addOptionalArgument("name", ArgumentParser.StringParser);
+        parser.addOptionalArgument("health", Double::parseDouble);
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
 
-        this.target = parts[1];
+        this.target = result.getPositional(0);
 
-        ArgumentParser parser = new ArgumentParser();
-
-        parser.addArgument("ai", Boolean::parseBoolean);
-        parser.addArgument("position", arg-> Arrays.stream(arg.split(";")).map(Integer::parseInt).collect(Collectors.toList()));
-        parser.addArgument("name", ArgumentParser.StringParser);
-        parser.addArgument("health", Double::parseDouble);
-
-        HashMap<String,ArgumentParser.ArgumentResult> result = parser.parse(Arrays.copyOfRange(parts,2, parts.length));
-
-        this.setAi = !result.get("ai").isNull();
+        this.setAi = result.isSet("ai");
         if(this.setAi) {
-            this.ai = result.get("ai").asBool();
+            this.ai = result.getFlag("ai");
         }
 
-        this.setPosition = !result.get("position").isNull();
+        this.setPosition = result.isSet("position");
         if(this.setPosition) {
-            @SuppressWarnings("unchecked")
-            List<Integer> positions = (List<Integer>)result.get("position").get();;
+            List<Integer> positions = result.getOptional("position");
             this.x = positions.get(0);
             this.y = positions.get(1);
             this.z = positions.get(2);
         }
 
-        this.name = result.get("name").asString();
+        this.name = result.getOptional("name");
 
-        this.setHealth = !result.get("health").isNull();
+        this.setHealth = result.isSet("health");
         if(this.setHealth) {
-            this.health = result.get("health").asInt();
+            this.health = result.getOptional("health");
         }
-        
     }
 
     @Override
