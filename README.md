@@ -43,48 +43,49 @@ pause
 - A detailed explanation of each command can be found further down [Details](#protocol-details).
 - Throughout the commands there are references to indices of online players, it is important to note that currently the index is completly based on the order the players joined in and will change if the players disconnect and rejoin. Currently there is no way to identify the players unqiuely based on a id.
   - You can of course still differantiate the players based on their names
+- We use the symbol `𝇉` as the seperator between arguments
 
 #### Dimensions
 
 - Currently the following dimensions are available
   - `world`: the normal overworld
   - `world_nether`: The Nether
-  - ` world_the_end`: The End
+  - `world_the_end`: The End
 
 ### Player
 
-- `getPlayer <index:int>` gets information about a player. [Details](#command-getplayer)
-- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> <dimension> ?rotation:int?` Set the player position [Details](#command-setplayerpos)
-- `setPlayerStat <type:string> <playerIndex:int> <value:double>` Set a player stat [Details](#command-setplayerstat)
-- `showTitle <playerIndex:int> <title:String> <subtitle:String> <fadeIn:int> <stay:int> <fadeOut:int>` Show a Title to players [Details](#command-showtitle)
+- `getPlayer𝇉<index:int>` gets information about a player. [Details](#command-getplayer)
+- `setPlayerPos𝇉<playerindex:int>𝇉<x:int>𝇉<y:int>𝇉<z:int>𝇉<dimension>𝇉?rotation:int?` Set the player position [Details](#command-setplayerpos)
+- `setPlayerStat𝇉<type:string>𝇉<playerIndex:int>𝇉<value:double>` Set a player stat [Details](#command-setplayerstat)
+- `showTitle𝇉<playerIndex:int𝇉<title:String>𝇉<subtitle:String>𝇉<fadeIn:int>𝇉<stay:int>𝇉<fadeOut:int>` Show a Title to players [Details](#command-showtitle)
 
 #### Inventory
 
-- `addInv <playerIndex:int> <materialId:String> ?name:String? ?slot:int? !unbreakable!` Add an Item to the Inventor [Details](#command-addinv)
-- `getInv <playerIndex:int>` Returns the inventory of a player [Details](#command-getinv)
+- `addInv𝇉<playerIndex:int>𝇉<materialId:String>𝇉?name:String?𝇉?slot:int?𝇉!unbreakable!` Add an Item to the Inventor [Details](#command-addinv)
+- `getInv𝇉<playerIndex:int>` Returns the inventory of a player [Details](#command-getinv)
 
 ## Block
 
-- `setBlock <x:int> <y:int> <z:int> <dimension:String> <blockid:String>` Set a block at a location [Deailts](#command-setblock)
-- `getBlock <x:int> <y:int> <z:int> <dimension:String>` gets information about a block [Details](#command-getblock)
+- `setBlock𝇉<x:int>𝇉<y:int>𝇉<z:int>𝇉<dimension:String>𝇉<blockid:String>` Set a block at a location [Deailts](#command-setblock)
+- `getBlock𝇉<x:int>𝇉<y:int>𝇉<z:int𝇉<dimension:String>` gets information about a block [Details](#command-getblock)
 
 ## Chat
 
-- `postChat <message:string>` posts a message to chat [Details](#command-postchat)
-- `chatCommand <command:String>` Runs chat command in console [Details](#command-chatcommand)
+- `postChat𝇉<message:string>` posts a message to chat [Details](#command-postchat)
+- `chatCommand𝇉<command:String>` Runs chat command in console [Details](#command-chatcommand)
 - `pollChat` [Details](#command-pollchat)
 
 ### Entity
 
-- `spawnEntity <x:int> <y:int> <z:int> <dimension:String> <entityid:String>` [Details](#command-spawnentity)
-- `editEntity <target:String> ?name:String? ?position:x;y;z;dimension? ?ai:boolean?` [Details](#command-editentity)
-- `getEntity <target:String>` [Details](#command-getentity)
+- `spawnEntity𝇉<x:int>𝇉<y:int>𝇉<z:int>𝇉<dimension:String𝇉<entityid:String>` [Details](#command-spawnentity)
+- `editEntity𝇉<target:String>𝇉?name:String?𝇉?position:x;y;z;dimension?𝇉?ai:boolean?` [Details](#command-editentity)
+- `getEntity𝇉<target:String>` [Details](#command-getentity)
 
 ### Boss Bar
 
-- `spawnBossBar <name> <text>` [Details](#command-spawnbossbar)
-- `editBossBar <command:string> <name:string> ?text:string? ?color:string? ?value:float?` [Details](#command-editbossbar)
-- `deleteBossBar <name:string>` [Details](#command-deletebossbar)
+- `spawnBossBar𝇉<name>𝇉<text>` [Details](#command-spawnbossbar)
+- `editBossBar𝇉<command:string>𝇉<name:string𝇉?text:string?𝇉?color:string?𝇉?value:float?` [Details](#command-editbossbar)
+- `deleteBossBar𝇉<name:string>` [Details](#command-deletebossbar)
 
 ### Misc
 
@@ -123,7 +124,7 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 
 ### Command: getPlayer
 
-- `getPlayer <index:int>` gets information about a player
+- `𝇉<index:int>` gets information about a player
 
 #### Args
 
@@ -153,13 +154,13 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 #### Example
 
 ```bash
-getPlayer 0
+getPlayer𝇉0
 0 Player1 39 83 72 17 STONE false
 ```
 
 ### Command: setPlayerStat
 
-- `setPlayerStat <type:string> <playerIndex:int> <value:double>`
+- `setPlayerStat𝇉<type:string>𝇉<playerIndex:int>𝇉<value:double>`
 
 #### Args
 
@@ -170,13 +171,13 @@ getPlayer 0
 ### Example
 
 ```bash
-setPlayerStat MAX_HEALTH 0 10
+setPlayerStat𝇉MAX_HEALTH𝇉0𝇉10
 
 ```
 
 ### Command: setPlayerVelocity
 
-- `setPlayerVelocity <type:String> <playerIndex:int> <value:double>`
+- `setPlayerVelocity𝇉<type:String𝇉<playerIndex:int>𝇉<value:double>`
 
 #### Args
 
@@ -191,13 +192,13 @@ setPlayerStat MAX_HEALTH 0 10
 #### Example
 
 ```bash
-setPlayerVelocity UP 0 1
+setPlayerVelocity𝇉UP𝇉0𝇉1
 
 ```
 
 ### Command: showTitle
 
-- `showTitle <playerIndex:int> <title:String> <subtitle:String> <fadeIn:int> <stay:int> <fadeOut:int>`
+- `showTitle𝇉<playerIndex:int>𝇉<title:String>𝇉<subtitle:String>𝇉<fadeIn:int>𝇉<stay:int>𝇉<fadeOut:int>`
 
 #### Args
 
@@ -217,7 +218,7 @@ showTitle𝇉-1𝇉Das ist ein Title𝇉Mit einem subtitle𝇉200𝇉200𝇉200
 
 ### Command: addInv
 
-- `addInv <playerIndex:int> <materialId:String> ?name:String? ?slot:int? !unbreakable!`
+- `addInv𝇉<playerIndex:int>𝇉<materialId:String>𝇉?name:String?𝇉?slot:int?𝇉!unbreakable!`
 
 #### Args
 
@@ -231,13 +232,13 @@ showTitle𝇉-1𝇉Das ist ein Title𝇉Mit einem subtitle𝇉200𝇉200𝇉200
 #### Example
 
 ```bash
-addInv 0 wooden_pickaxe 1 unbreakable name:Adrians|&s&|Pickaxe slot:2
+addInv𝇉0𝇉wooden_pickaxe𝇉1𝇉unbreakable𝇉name:Adrians Pickaxe𝇉slot:2
 
 ```
 
 ### Command: getInv
 
-- `getInv <playerIndex:int>` Returns the inventory of a player
+- `getInv𝇉<playerIndex:int>` Returns the inventory of a player
 
 #### Args
 
@@ -250,13 +251,13 @@ A series of items of the following structure: `<index:int>:<materialname:String>
 #### Example
 
 ```bash
-getInv 0
+getInv𝇉0
 0:LILY_OF_THE_VALLEY:1 4:STONE_PRESSURE_PLATE:1 7:SCULK_SHRIEKER:1 11:REDSTONE:13 25:DISPENSER:1 29:TARGET:1
 ```
 
 ### Command: setPlayerPos
 
-- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> <dimension:String> ?rotation:int?`
+- `setPlayerPos𝇉<playerindex:int>𝇉<x:int𝇉<y:int>𝇉<z:int>𝇉<dimension:String>𝇉?rotation:int?`
 
 #### Args
 
@@ -266,7 +267,7 @@ getInv 0
 
 ### Command: setBlock
 
-- `setBlock <x:int> <y:int> <z:int> <dimension:String> <blockid:String>` Set a block at a location
+- `setBlock𝇉<x:int>𝇉<y:int>𝇉<z:int>𝇉<dimension:String>𝇉<blockid:String>` Set a block at a location
 
 #### Args
 
@@ -277,13 +278,13 @@ getInv 0
 #### Example
 
 ```bash
-setBlock 10 10 10 stone
+setBlock𝇉10𝇉10𝇉10𝇉stone
 
 ```
 
 ### Command: getBlock
 
-- `getBlock <x:int> <y:int> <z:int> <dimension:String>` gets information about a block
+- `getBlock𝇉<x:int>𝇉<y:int>𝇉<z:int>𝇉<dimension:String>` gets information about a block
 
 #### Args
 
@@ -293,13 +294,13 @@ setBlock 10 10 10 stone
 #### Example
 
 ```bash
-getBlock 10 10 10
+getBlock𝇉10𝇉10𝇉10
 DEEPSLATE
 ```
 
 ### Command: postChat
 
-- `postChat <message:string>` posts a message to chat
+- `postChat𝇉<message:string>` posts a message to chat
 
 #### Args
 
@@ -308,13 +309,13 @@ DEEPSLATE
 #### Example
 
 ```bash
-postChat Hello World my name is Adrian
+postChat𝇉Hello World my name is Adrian
 
 ```
 
 ### Command: chatCommand
 
-- `chatCommand <command:String>` Runs chat command in console
+- `chatCommand𝇉<command:String>` Runs chat command in console
 
 #### Args
 
@@ -323,7 +324,7 @@ postChat Hello World my name is Adrian
 #### Example
 
 ```bash
-chatCommand say Hello from plugin!
+chatCommand𝇉say Hello from plugin!
 
 ```
 
@@ -344,7 +345,7 @@ Player1:2025|12|21|17|49|27:0:This is a message:2025|12|21|17|49|29:1:Message 2
 
 ### Command: spawnEntity
 
-- `spawnEntity <x:int> <y:int> <z:int> <dimension:String> <entityid:String>` Spawns an entity
+- `spawnEntity𝇉<x:int>𝇉<y:int>𝇉<z:int>𝇉<dimension:String>𝇉<entityid:String>` Spawns an entity
 
 #### Args
 
@@ -359,13 +360,13 @@ Player1:2025|12|21|17|49|27:0:This is a message:2025|12|21|17|49|29:1:Message 2
 #### Example
 
 ```bash
-spawnEntity 10 10 10 Zombie`
+spawnEntity𝇉10𝇉10𝇉10𝇉Zombie`
 ff568527-7c0c-4536-aed2-ef77429d61b8
 ```
 
 ### Command: editEntity
 
-- `editEntity <target:String> ?name:String? ?position:x;y;z;dimension? ?ai:boolean?` Edits a existing entity which was previously spawned by the `spawnEntity` command
+- `editEntity𝇉<target:String>𝇉?name:String?𝇉?position:x;y;z;dimension?𝇉?ai:boolean?` Edits a existing entity which was previously spawned by the `spawnEntity` command
 
 #### Args
 
@@ -377,13 +378,13 @@ ff568527-7c0c-4536-aed2-ef77429d61b8
 #### Example
 
 ```bash
-editEntity ff568527-7c0c-4536-aed2-ef77429d61b8 name:Zomb position:10;10;200 ai:false
+editEntity𝇉ff568527-7c0c-4536-aed2-ef77429d61b8𝇉name:Zomb𝇉position:10;10;200𝇉ai:false
 
 ```
 
 ### Command: getEntity
 
-- `getEntity <target:String>`
+- `getEntity𝇉<target:String>`
 
 #### Args
 
@@ -391,20 +392,20 @@ editEntity ff568527-7c0c-4536-aed2-ef77429d61b8 name:Zomb position:10;10;200 ai:
 
 #### Returns
 
-- `<target:String> <name:string> <x:int> <y:int> <z:int> <dimension:String> <health:double>`
+- `<target:String>𝇉<name:string>𝇉<x:int>𝇉<y:int>𝇉<z:int>𝇉<dimension:String>𝇉<health:double>`
 
 - `<dimensions>` see [dimensions](#dimensions)
 
 #### Example
 
 ```bash
-getEntity ff568527-7c0c-4536-aed2-ef77429d61b8
-ff568527-7c0c-4536-aed2-ef77429d61b8 Zomb 10 10 200 5
+getEntity𝇉ff568527-7c0c-4536-aed2-ef77429d61b8
+ff568527-7c0c-4536-aed2-ef77429d61b8𝇉Zomb𝇉10𝇉10𝇉200𝇉5
 ```
 
 ### Command: spawnBossBar
 
-- `spawnBossBar <name> <text>`
+- `spawnBossBar𝇉<name>𝇉<text>`
 
 #### Args
 
@@ -414,13 +415,13 @@ ff568527-7c0c-4536-aed2-ef77429d61b8 Zomb 10 10 200 5
 #### Example
 
 ```bash
-spawnBossBar myuniquename Text
+spawnBossBar𝇉myuniquename𝇉Text
 
 ```
 
 ### Command: editBossBar
 
-- `editBossBar <command:string> <name:string> ?text:string? ?color:string? ?value:float?`
+- `editBossBar𝇉<command:string𝇉<name:string>𝇉?text:string?𝇉?color:string?𝇉?value:float?`
 
 #### Args
 
@@ -433,13 +434,13 @@ spawnBossBar myuniquename Text
 #### Example
 
 ```bash
-editBossBar text myuniquename text:Hello
+editBossBar𝇉text𝇉myuniquename𝇉text:Hello
 
 ```
 
 ### Command: deleteBossBar
 
-- `deleteBossBar <name:string>` deletes the boss bar
+- `deleteBossBar𝇉<name:string>` deletes the boss bar
 
 #### Args
 
@@ -448,7 +449,7 @@ editBossBar text myuniquename text:Hello
 #### Example
 
 ```bash
-deleteBossBar myuniquename
+deleteBossBar𝇉myuniquename
 
 ```
 
