@@ -8,6 +8,8 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.entity.Player;
 import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class ShowTitle extends Command {
 
@@ -18,25 +20,31 @@ public class ShowTitle extends Command {
     private int stay;
     private int fadeOut;
 
-    public ShowTitle(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
+    public ShowTitle(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
 
-        if(parts.length != 7) {
+        parser.addPositionalArguments(
+            ArgumentParser.IntParser,
+            ArgumentParser.StringParser,
+            ArgumentParser.StringParser,
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser
+        );
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
 
-        this.title = parts[2];
-        this.subtitle = parts[3];
-
-        try {
-            this.player = Integer.parseInt(parts[1]);
-            this.fadeIn = Integer.parseInt(parts[4]);
-            this.stay = Integer.parseInt(parts[5]);
-            this.fadeOut = Integer.parseInt(parts[6]);
-        } catch(NumberFormatException e) {
-            this.valid = false;
-        }
+        this.player = result.getPositional(0);
+        this.title = result.getPositional(1);
+        this.subtitle = result.getPositional(2);
+        this.fadeIn = result.getPositional(3);
+        this.stay = result.getPositional(4);
+        this.fadeOut = result.getPositional(5);
     }
 
     @Override
