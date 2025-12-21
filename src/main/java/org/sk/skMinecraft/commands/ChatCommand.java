@@ -1,13 +1,16 @@
 package org.sk.skMinecraft.commands;
 
+import java.util.Arrays;
+
 import org.bukkit.Bukkit;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
 
 public class ChatCommand extends Command {
 
     private String command;
 
-    public ChatCommand(String command) {
-        this.command = command.replace("chatCommand ", "");
+    public ChatCommand(StringCommand command) {
+        this.command = Arrays.stream(command.arguments()).toString();
     }
 
     @Override
