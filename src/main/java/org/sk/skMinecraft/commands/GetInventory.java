@@ -6,22 +6,28 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class GetInventory extends Command {
 
     private int playerIndex;
 
-    public GetInventory(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
+    public GetInventory(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
 
-        if(parts.length < 2) {
+        parser.addPositionalArguments(
+            ArgumentParser.IntParser
+        );
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
 
-        try {
-            this.playerIndex = Integer.parseInt(parts[1]);
-        } catch (Exception ignored) {}
+        this.playerIndex = result.getPositional(0);
     }
 
     @Override
