@@ -1,5 +1,7 @@
 package org.sk.skMinecraft;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -13,6 +15,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public final class SkMinecraft extends JavaPlugin implements Listener {
@@ -45,6 +48,18 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
     public static StringCommand splitCommand(String command) {
         String[] parts = command.split(SkMinecraft.seperator);
         return new StringCommand(parts[0], Arrays.copyOfRange(parts, 1, parts.length));
+    }
+
+    public static int playerIndexFromName(String name) {
+        Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
+
+        for(int i = 0;i < players.length;i++){
+            if(players[i].getName().equals(name)) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     @Override
@@ -83,7 +98,7 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        ChatMessage message = new ChatMessage(event.getPlayer(), event.getMessage());
+        ChatMessage message = new ChatMessage(event.getPlayer(), event.getMessage(), LocalDateTime.now());
         CentralResourceHandler.addChatMessage(message);
     }
 
