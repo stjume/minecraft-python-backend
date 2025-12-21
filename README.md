@@ -2,7 +2,7 @@
 
 A simple minecraft plugin for sending commands to a server.
 
-`The plugin was developed with spigot version 1.21.5`.
+`The plugin was developed with spigot version 1.21.5` [download](https://getbukkit.org/download/spigot).
 
 ## Building
 
@@ -10,6 +10,22 @@ This project can be build using maven, just run the mvn command in the directory
 
 ```bash
 mvn
+```
+
+### Creating the Server
+Follow the [instructions](https://www.spigotmc.org/wiki/spigot-installation/#windows).
+Basically.:
+- Create an arbitrary folder
+  - Create a new file (`.txt` is the simplest)
+  - Put these three lines below in it (make sure to replace the version in the .jar's filename if needed.
+  - Rename the file to `start.bat` (accept window's warning, we want the file to be executable).
+  - Put the downloaded server-jar in the folder, next to the bat
+  - Create a new folder inside your current folder, name it `plugins`
+  - Put the plugin-jar, you built or downloaded in it
+  
+ ```@echo off
+java -Xms#G -Xmx#G -XX:+UseG1GC -jar spigot-1.21.5.jar nogui
+pause
 ```
 
 ## Usage
