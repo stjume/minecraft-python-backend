@@ -54,7 +54,7 @@ pause
 ### Player
 
 - `getPlayer <index:int>` gets information about a player. [Details](#command-getplayer)
-- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> ?rotation:int?` Set the player position [Details](#command-setplayerpos)
+- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> <dimension> ?rotation:int?` Set the player position [Details](#command-setplayerpos)
 - `setPlayerStat <type:string> <playerIndex:int> <value:double>` Set a player stat [Details](#command-setplayerstat)
 - `showTitle <playerIndex:int> <title:String> <subtitle:String> <fadeIn:int> <stay:int> <fadeOut:int>` Show a Title to players [Details](#command-showtitle)
 
@@ -256,12 +256,12 @@ getInv 0
 
 ### Command: setPlayerPos
 
-- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> ?rotation:int?`
+- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> <dimension:String> ?rotation:int?`
 
 #### Args
 
 - `playerIndex` the index of the online player
-- `<x>, <y>, <z>` the new position of the player
+- `<x:>, <y>, <z> <dimension>` the new position of the player (see [dimensions](#dimensions))
 - `?rotation?` optionaly the direction the player should be looking in
 
 ### Command: setBlock
