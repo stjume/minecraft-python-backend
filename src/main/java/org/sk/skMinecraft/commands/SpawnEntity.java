@@ -20,7 +20,8 @@ public class SpawnEntity extends Command{
         parser.addPositionalArguments(
             ArgumentParser.IntParser,
             ArgumentParser.IntParser,
-            ArgumentParser.IntParser
+            ArgumentParser.IntParser,
+            ArgumentParser.StringParser
         );
 
         ParseResult result = parser.parse(command.arguments());
