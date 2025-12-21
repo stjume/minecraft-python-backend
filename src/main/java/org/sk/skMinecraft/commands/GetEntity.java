@@ -6,20 +6,28 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.sk.skMinecraft.CentralResourceHandler;
 import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class GetEntity extends Command {
 
     private String target;
 
-    public GetEntity(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
+    public GetEntity(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
 
-        if(parts.length < 2) {
+        parser.addPositionalArguments(
+            ArgumentParser.StringParser
+        );
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
-
-        this.target = parts[1];
+        
+        this.target = result.getPositional(0);
     }
 
     public static String informationString(String uuid, Entity ent) {
