@@ -5,27 +5,28 @@ import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class GetPlayer extends Command {
 
     private int playerIndex;
 
-    public GetPlayer(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
-
+    public GetPlayer(StringCommand command) {
         ArgumentParser parser = new ArgumentParser();
 
-        parser.addPositionalArgument(ArgumentParser.IntParser);
+        parser.addPositionalArguments(
+            ArgumentParser.IntParser
+        );
 
-        ParseResult arguments = parser.parse(parts);
+        ParseResult arguments = parser.parse(command.arguments());
 
         if(!arguments.isValid()) {
             this.valid = false;
             return;
         }
 
-        this.playerIndex = arguments.getPositional(0).asInt();
+        this.playerIndex = arguments.getPositional(0);
     }
 
     @Override
