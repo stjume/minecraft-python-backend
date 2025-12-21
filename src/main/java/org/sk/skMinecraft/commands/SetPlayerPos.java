@@ -60,8 +60,7 @@ public class SetPlayerPos extends Command {
             }
 
             Player player = players[playerIndex];
-            Location loc = new Location(player.getWorld(), this.x, this.y, this.z);
-            loc.setWorld(this.world);
+            Location loc = new Location(this.world, this.x, this.y, this.z);
             if(!this.setRot) {
                 loc.setYaw(player.getLocation().getYaw());
             }else {
