@@ -28,7 +28,7 @@ public class SetPlayerStat extends Command {
         parser.addPositionalArguments(
             ArgumentParser.StringParser,
             ArgumentParser.IntParser,
-            ArgumentParser.IntParser
+            ArgumentParser.DoubleParser
         );
 
         ParseResult result = parser.parse(command.arguments());
