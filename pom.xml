@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.sk</groupId>
-    <artifactId>skminecraft</artifactId>
+    <artifactId>stminecraft</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>skminecraft</name>
+    <name>stminecraft</name>
 
     <properties>
         <java.version>21</java.version>
