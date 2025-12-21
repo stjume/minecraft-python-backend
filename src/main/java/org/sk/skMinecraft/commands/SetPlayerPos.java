@@ -28,7 +28,7 @@ public class SetPlayerPos extends Command {
             ArgumentParser.StringParser
         );
 
-        parser.addOptionalArgument("rot", Integer::parseInt);
+        parser.addOptionalArgument("rotation", Integer::parseInt);
 
         ParseResult result = parser.parse(command.arguments());
 
