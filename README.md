@@ -44,6 +44,13 @@ pause
 - Throughout the commands there are references to indices of online players, it is important to note that currently the index is completly based on the order the players joined in and will change if the players disconnect and rejoin. Currently there is no way to identify the players unqiuely based on a id.
   - You can of course still differantiate the players based on their names
 
+#### Dimensions
+
+- Currently the following dimensions are available
+  - `world`: the normal overworld
+  - `world_nether`: The Nether
+  - ` world_the_end`: The End
+
 ### Player
 
 - `getPlayer <index:int>` gets information about a player. [Details](#command-getplayer)
@@ -124,11 +131,10 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 
 #### Returns
 
-- `<index:int> <name:String> <x:int> <y:int> <z:int> <rotation:int> <looking_at_block:String> <sneak:boolean> <max_health:double> <health:double> <food_level:double> <saturation: double> <xp_level:int> <xp_progress:double>`
+- `<index:int> <name:String> <x:int> <y:int> <z:int> <dimension:String> <rotation:int> <looking_at_block:String> <sneak:boolean> <max_health:double> <health:double> <food_level:double> <saturation: double> <xp_level:int> <xp_progress:double>`
   - `<index>` the index of the player
   - `<name>` the name of the player
-  - `<x>, <y>, <z>` `<dimension>` The tile position of the player
-    - `<dimension>` should be one of `world`, `world_nether`, `world_the_end`
+  - `<x>, <y>, <z>` `<dimension>` The tile position of the player (see [dimensions](#dimensions))
   - `<rotation>` The minecraft rotation of the player.
   - `<looking_at_block>` The block type the player is looking at
   - `<sneak>` depending of wether or not the player is sneaking `true` or `false`
