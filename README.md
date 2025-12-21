@@ -111,7 +111,8 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 - `<index:int> <name:String> <x:int> <y:int> <z:int> <rotation:int> <looking_at_block:String> <sneak:boolean> <max_health:double> <health:double> <food_level:double> <saturation: double> <xp_level:int> <xp_progress:double>`
   - `<index>` the index of the player
   - `<name>` the name of the player
-  - `<x>, <y>, <z>` The tile position of the player
+  - `<x>, <y>, <z>` `<dimension>` The tile position of the player
+    - `<dimension>` should be one of `world`, `world_nether`, `world_the_end`
   - `<rotation>` The minecraft rotation of the player.
   - `<looking_at_block>` The block type the player is looking at
   - `<sneak>` depending of wether or not the player is sneaking `true` or `false`
