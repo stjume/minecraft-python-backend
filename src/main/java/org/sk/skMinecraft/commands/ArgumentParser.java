@@ -102,19 +102,18 @@ public class ArgumentParser {
     }
 
     public ParseResult parse(String[] parts) {
-        
         if(parts.length < positionalArguments.size()) {
             return new ParseResult(null, null, false);
         }
         
-        ArrayList<ArgumentResult> postionals = new ArrayList<>();
+        ArrayList<ArgumentResult> positionals = new ArrayList<>();
         for(int i = 0;i < positionalArguments.size();i++) {
             try {
                 String part = parts[i];
                 Function<String, Object> parser = positionalArguments.get(i);
                 Object parsedResult = parser.apply(part);
 
-                postionals.add(new ArgumentResult(parsedResult));
+                positionals.add(new ArgumentResult(parsedResult));
             } catch(Exception e) {
                 return new ParseResult(null, null, false);
             } 
@@ -161,6 +160,6 @@ public class ArgumentParser {
             optionals.put(key, new ArgumentResult(false));
         }
 
-        return new ParseResult(postionals, optionals, true);
+        return new ParseResult(positionals, optionals, true);
     }
 }
