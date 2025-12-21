@@ -2,6 +2,7 @@ package org.sk.skMinecraft.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
@@ -11,6 +12,7 @@ public class SetPlayerPos extends Command {
     private int x;
     private int y;
     private int z;
+    private World world;
     private int rot;
     private boolean setRot;
     private int playerIndex;
@@ -21,8 +23,9 @@ public class SetPlayerPos extends Command {
         parser.addPositionalArguments(
             ArgumentParser.IntParser,
             ArgumentParser.IntParser,  
-            ArgumentParser.IntParser,  
-            ArgumentParser.IntParser  
+            ArgumentParser.IntParser, 
+            ArgumentParser.IntParser,
+            ArgumentParser.StringParser
         );
 
         parser.addOptionalArgument("rot", Integer::parseInt);
@@ -38,6 +41,8 @@ public class SetPlayerPos extends Command {
         this.x = result.getPositional(1);
         this.y = result.getPositional(2);
         this.z = result.getPositional(3);
+        String worldName = result.getPositional(4);
+        this.world = Bukkit.getWorld(worldName);
 
         this.setRot = !result.isSet("rot");
         if(this.setRot) {
@@ -56,6 +61,7 @@ public class SetPlayerPos extends Command {
 
             Player player = players[playerIndex];
             Location loc = new Location(player.getWorld(), this.x, this.y, this.z);
+            loc.setWorld(this.world);
             if(!this.setRot) {
                 loc.setYaw(player.getLocation().getYaw());
             }else {
