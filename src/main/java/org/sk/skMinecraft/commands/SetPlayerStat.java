@@ -1,10 +1,14 @@
 package org.sk.skMinecraft.commands;
 
+import java.text.ParseException;
+
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class SetPlayerStat extends Command {
 
@@ -21,21 +25,27 @@ public class SetPlayerStat extends Command {
     private int playerIndex;
     private double value;
 
-    public SetPlayerStat(String command){
-        String[] parts = command.split(SkMinecraft.seperator);
+    public SetPlayerStat(StringCommand command){
+        ArgumentParser parser = new ArgumentParser();
 
-        if(parts.length < 4) {
+        parser.addPositionalArguments(
+            ArgumentParser.StringParser,
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser
+        );
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
 
-        this.type = Type.valueOf(parts[1].toUpperCase());
-        try {
-            this.playerIndex = Integer.parseInt(parts[2]);
-            this.value = Double.parseDouble(parts[3]);
-        }catch (Exception ignored) {
-            this.valid = false;
-        }
+        String typeName = result.getPositional(0);
+        this.type = Type.valueOf(typeName.toUpperCase());
+
+        this.playerIndex = result.getPositional(1);
+        this.value = result.getPositional(2);
     }
 
     @Override
