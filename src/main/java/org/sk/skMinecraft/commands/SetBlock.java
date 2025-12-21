@@ -9,6 +9,7 @@ import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class SetBlock extends Command {
     private int x,y,z;
+    private World world;
     private Material material;
 
     public SetBlock(StringCommand command) {
@@ -18,6 +19,7 @@ public class SetBlock extends Command {
             ArgumentParser.IntParser,
             ArgumentParser.IntParser,
             ArgumentParser.IntParser,
+            ArgumentParser.StringParser,
             ArgumentParser.StringParser
         );
 
@@ -32,7 +34,10 @@ public class SetBlock extends Command {
         this.y = result.getPositional(1);
         this.z = result.getPositional(2);
 
-        String blockId = result.getPositional(3);
+        String worldName = result.getPositional(3);
+        this.world = Bukkit.getWorld(worldName);
+
+        String blockId = result.getPositional(4);
         this.material = Material.matchMaterial(blockId);
 
         if (this.material == null || !this.material.isBlock()) {
@@ -43,8 +48,7 @@ public class SetBlock extends Command {
 
     public void apply() {
         Bukkit.getScheduler().runTask(this.plugin, () -> {
-            World world = Bukkit.getWorlds().getFirst(); // default world
-            Location loc = new Location(world, x, y, z);
+            Location loc = new Location(this.world, x, y, z);
             loc.getBlock().setType(this.material);
         });
     }
