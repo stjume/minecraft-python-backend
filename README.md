@@ -31,7 +31,7 @@ pause
 ## Usage
 
 - This is a plugin intended to be used with a spigot server, just put the jar into the plugin folder.
-- Then you can connect to the plugin via tcp on port `12345`.
+- Then you can connect to the plugin via tcp on port `25595`.
 - Send each command as a message over tcp, the message has to end with a newline.
 - Each command is a commandname followed by a number of arguments. For explanation of the argument types see: [Arguments](#argument-types)
 
@@ -155,7 +155,7 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 
 ```bash
 getPlayer𝇉0
-0 Player1 39 83 72 17 STONE false
+0𝇉Player1𝇉39𝇉83𝇉72𝇉17𝇉STONE𝇉false
 ```
 
 ### Command: setPlayerStat
