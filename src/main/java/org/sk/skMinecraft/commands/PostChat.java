@@ -3,7 +3,6 @@ package org.sk.skMinecraft.commands;
 import java.util.Arrays;
 
 import org.bukkit.Bukkit;
-import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 
 public class PostChat extends Command {
