@@ -66,7 +66,7 @@ pause
 ## Block
 
 - `setBlock <x:int> <y:int> <z:int> <dimension:String> <blockid:String>` Set a block at a location [Deailts](#command-setblock)
-- `getBlock <x:int> <y:int> <z:int>` gets information about a block [Details](#command-getblock)
+- `getBlock <x:int> <y:int> <z:int> <dimension:String>` gets information about a block [Details](#command-getblock)
 
 ## Chat
 
@@ -283,11 +283,12 @@ setBlock 10 10 10 stone
 
 ### Command: getBlock
 
-- `getBlock <x:int> <y:int> <z:int>` gets information about a block
+- `getBlock <x:int> <y:int> <z:int> <dimension:String>` gets information about a block
 
 #### Args
 
 - `<x> <y> <z>:int int int` position of the block
+- `<dimension>` see [dimensions](#dimensions)
 
 #### Example
 
