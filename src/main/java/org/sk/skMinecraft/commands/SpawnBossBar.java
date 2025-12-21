@@ -6,26 +6,31 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.KeyedBossBar;
 import org.bukkit.entity.Player;
-import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class SpawnBossBar extends Command {
 
     private String name;
     private String text;
 
-    public SpawnBossBar(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
+    public SpawnBossBar(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
 
-        this.name = "";
-        this.text = "";
-        if (parts.length < 2) {
+        parser.addPositionalArguments(
+            ArgumentParser.StringParser,
+            ArgumentParser.StringParser
+        );
 
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
 
-        name = parts[1];
-        text = parts[2];
+        this.name = result.getPositional(0);
+        this.text = result.getPositional(1);
     }
 
     @Override
