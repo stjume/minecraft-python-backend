@@ -426,6 +426,8 @@ deleteBossBar myuniquename
 
 ### Command: batch
 
+!!This command is currently not supported!!
+
 - `batch ;|;<command:String>;|;<command:String>` Runs all commands in a batch, the `;|;` acts as the seperator. Please make sure there are no spaces around the seperator except before the first one.
 
 #### Args
