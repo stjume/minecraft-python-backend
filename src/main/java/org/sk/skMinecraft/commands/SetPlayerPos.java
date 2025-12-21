@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,32 +19,33 @@ public class SetPlayerPos extends Command {
     private boolean setRot;
     private int playerIndex;
 
-    public SetPlayerPos(String command ){
-        String[] parts = command.split(SkMinecraft.seperator);
+    public SetPlayerPos(StringCommand command ){
+        ArgumentParser parser = new ArgumentParser();
 
-        if(parts.length < 5) {
+        parser.addPositionalArguments(
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser,  
+            ArgumentParser.IntParser,  
+            ArgumentParser.IntParser  
+        );
+
+        parser.addOptionalArgument("rot", Integer::parseInt);
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
 
-        try {
-            this.playerIndex = Integer.parseInt(parts[1]);
-            this.x = Integer.parseInt(parts[2]);
-            this.y = Integer.parseInt(parts[3]);
-            this.z = Integer.parseInt(parts[4]);
-        } catch (Exception e) {
-            this.valid = false;
-        }
+        this.playerIndex = result.getPositional(0);
+        this.x = result.getPositional(1);
+        this.y = result.getPositional(2);
+        this.z = result.getPositional(3);
 
-        ArgumentParser parser = new ArgumentParser();
-
-        parser.addArgument("rot", Integer::parseInt);
-
-        HashMap<String,ArgumentParser.ArgumentResult> result = parser.parse(Arrays.copyOfRange(parts,5, parts.length));
-
-        this.setRot = !result.get("rot").isNull();
+        this.setRot = !result.isSet("rot");
         if(this.setRot) {
-            this.rot = result.get("rot").asInt();
+            this.rot = result.getOptional("rot");
         }
     }
 
