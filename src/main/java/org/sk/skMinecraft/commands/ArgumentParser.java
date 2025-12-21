@@ -11,12 +11,18 @@ public class ArgumentParser {
 
     public static Function<String, Object> StringParser = (arg) -> arg;
     public static Function<String, Object> IntParser = Integer::parseInt;
+    public static Function<String, Object> DoubleParser = Double::parseDouble;
 
     public static class ArgumentResult {
         Object value;
 
         public ArgumentResult(Object value) {
             this.value = value;
+        }
+
+        @SuppressWarnings("unchecked")
+        public <T> T get() {
+            return (T)this.value;
         }
 
         public int asInt() {
@@ -39,24 +45,32 @@ public class ArgumentParser {
             return (Float)value;
         }
 
-        public Object get() {return this.value;}
+        // public Object get() {return this.value;}
     }
 
 
     private record Argument(Function<String, Object> parser, Object defaultValue) {}
     public record ParseResult(ArrayList<ArgumentResult> positional, HashMap<String, ArgumentResult> optionals, boolean valid) {
-        public ArgumentResult getPositional(int index) {
-            return positional.get(index);
+        public <T> T getPositional(int index) {
+            return positional.get(index).get();
         }
 
-        public ArgumentResult getOptional(String name) {
-            return optionals.get(name);
+        public <T> T getOptional(String name) {
+            return optionals.get(name).get();
         }
 
         public boolean isValid() {
             return valid;
         }
-    }
+
+        public boolean getFlag(String name) {
+            return !optionals.get(name).asBool();
+        }
+        
+        public boolean isSet(String name) {
+            return !optionals.get(name).isNull();
+        }
+    } 
 
     private final ArrayList<Function<String, Object>> positionalArguments;
     private final HashMap<String, Argument> optionalArguments;
@@ -68,8 +82,11 @@ public class ArgumentParser {
         this.flags = new HashSet<>();
     }
 
-    public void addPositionalArgument(Function<String, Object> parser) {
-        positionalArguments.add(parser);
+    @SafeVarargs
+    public final void addPositionalArguments(Function<String, Object> ...parsers) {
+        for(Function<String, Object> parser : parsers) {
+            this.positionalArguments.add(parser);
+        }
     }
 
     public void addOptionalArgument(String name, Function<String, Object> parser, Object defaultValue) {
