@@ -3,19 +3,32 @@ package org.sk.skMinecraft.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class GetBlock extends Command{
 
     private int x,y,z;
 
-    public GetBlock(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
-        try {
-            this.x = Integer.parseInt(parts[1]);
-            this.y = Integer.parseInt(parts[2]);
-            this.z = Integer.parseInt(parts[3]);
-        } catch(Exception ignored){}
+    public GetBlock(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
+
+        parser.addPositionalArguments(
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser,
+            ArgumentParser.IntParser
+        );
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
+            this.valid = false;
+            return;
+        }
+
+        this.x = result.getPositional(0);
+        this.y = result.getPositional(1);
+        this.z = result.getPositional(2);
     }
 
     @Override
