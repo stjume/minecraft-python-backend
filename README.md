@@ -76,7 +76,7 @@ pause
 
 ### Entity
 
-- `spawnEntity <x:int> <y:int> <z:int> <entityid:String>` [Details](#command-spawnentity)
+- `spawnEntity <x:int> <y:int> <z:int> <dimension:String> <entityid:String>` [Details](#command-spawnentity)
 - `editEntity <target:String> ?name:String? ?position:x;y;z? ?ai:boolean?` [Details](#command-editentity)
 - `getEntity <target:String>` [Details](#command-getentity)
 
@@ -344,11 +344,12 @@ Player1:2025|12|21|17|49|27:0:This is a message:2025|12|21|17|49|29:1:Message 2
 
 ### Command: spawnEntity
 
-- `spawnEntity <x:int> <y:int> <z:int> <entityid:String>` Spawns an entity
+- `spawnEntity <x:int> <y:int> <z:int> <dimension:String> <entityid:String>` Spawns an entity
 
 #### Args
 
 - `<x> <y> <z>` position
+- `<dimension>` see [dimensions](#dimensions) 
 - `<entityid>` a string with entity id full list can be cound here: [Entities](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)
 
 #### Returns
