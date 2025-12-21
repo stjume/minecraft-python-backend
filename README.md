@@ -77,7 +77,7 @@ pause
 ### Entity
 
 - `spawnEntity <x:int> <y:int> <z:int> <dimension:String> <entityid:String>` [Details](#command-spawnentity)
-- `editEntity <target:String> ?name:String? ?position:x;y;z? ?ai:boolean?` [Details](#command-editentity)
+- `editEntity <target:String> ?name:String? ?position:x;y;z;dimension? ?ai:boolean?` [Details](#command-editentity)
 - `getEntity <target:String>` [Details](#command-getentity)
 
 ### Boss Bar
@@ -365,13 +365,13 @@ ff568527-7c0c-4536-aed2-ef77429d61b8
 
 ### Command: editEntity
 
-- `editEntity <target:String> ?name:String? ?position:x;y;z? ?ai:boolean?` Edits a existing entity which was previously spawned by the `spawnEntity` command
+- `editEntity <target:String> ?name:String? ?position:x;y;z;dimension? ?ai:boolean?` Edits a existing entity which was previously spawned by the `spawnEntity` command
 
 #### Args
 
 - `target` is the uuid returned by `spawnEntity`
 - `name` if is set the entites custom name is changed
-- `position`if  is set the entities position will be set to the given x,y,z coordinates
+- `position`if  is set the entities position will be set to the given x,y,z coordinates as well as the [dimension](#dimensions) ,
 - `ai` sets the ai of the entity, if its turned off the entity will not move.
 
 #### Example
