@@ -3,14 +3,14 @@ package org.sk.skMinecraft.commands;
 import org.bukkit.Bukkit;
 import org.sk.skMinecraft.CentralResourceHandler;
 import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.data.ChatMessage;
 
 import java.util.ArrayList;
 
 public class PollChat extends Command {
 
-    public PollChat(String s) {
-    }
+    public PollChat(StringCommand s) {}
 
     @Override
     public void apply() {
