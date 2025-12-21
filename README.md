@@ -131,7 +131,7 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 
 ```bash
 getPlayer 0
-0 ThisRyan 39 83 72 17 STONE false
+0 Player1 39 83 72 17 STONE false
 ```
 
 ### Command: setPlayerStat
@@ -308,13 +308,13 @@ chatCommand say Hello from plugin!
 
 #### Return
 
-- A list of block of `<playername>:<message>` seperated by `𝇉`
+- A list of blocks of `<playername>:|<year>|<month>|<day>|<hour>|<minute>|<second> :<playerIndex>:<message>` seperated by `𝇉`
 
 #### Example
 
 ```bash
 pollChat
-Player1:Hallo𝇉Player1:A second message𝇉Player2:Last message
+Player1:2025|12|21|17|49|27:0:This is a message:2025|12|21|17|49|29:1:Message 2
 ```
 
 ### Command: spawnEntity
