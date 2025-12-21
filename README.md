@@ -49,7 +49,7 @@ mvn
 
 ## Block
 
-- `setBlock <x:int> <y:int> <z:int> <blockid:String>` Set a block at a location [Deailts](#command-setblock)
+- `setBlock <x:int> <y:int> <z:int> <dimension:String> <blockid:String>` Set a block at a location [Deailts](#command-setblock)
 - `getBlock <x:int> <y:int> <z:int>` gets information about a block [Details](#command-getblock)
 
 ## Chat
@@ -250,11 +250,12 @@ getInv 0
 
 ### Command: setBlock
 
-- `setBlock <x:int> <y:int> <z:int> <blockid:String>` Set a block at a location
+- `setBlock <x:int> <y:int> <z:int> <dimension:String> <blockid:String>` Set a block at a location
 
 #### Args
 
 - `<x> <y> <z>` position of the block
+- `<dimension>` see [dimensions](#dimensions)
 - `<blockid>` the block id as a string i.e. "stone"
 
 #### Example
