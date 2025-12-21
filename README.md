@@ -188,7 +188,7 @@ setPlayerVelocity UP 0 1
 #### Example
 
 ```bash
-showTitle𝇉Das ist ein Title𝇉Mit einem subtitle𝇉200𝇉200𝇉200
+showTitle𝇉-1𝇉Das ist ein Title𝇉Mit einem subtitle𝇉200𝇉200𝇉200
 
 ```
 
