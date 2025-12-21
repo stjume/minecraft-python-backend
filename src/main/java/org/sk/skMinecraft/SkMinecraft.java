@@ -40,6 +40,15 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
         return result;
     } 
 
+    public static String convertWorldName(String worldName) {
+        switch (worldName) {
+            case "world": return "OVERWORLD";
+            case "world_nether": return "NETHER";
+            case "world_the_end": return "END";
+            default: return "UNKOWN";
+        }
+    }
+
     @Override
     public void onEnable() {
         CentralResourceHandler.init();
