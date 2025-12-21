@@ -375,7 +375,9 @@ editEntity ff568527-7c0c-4536-aed2-ef77429d61b8 name:Zomb position:10;10;200 ai:
 
 #### Returns
 
-- `<target:String> <name:string> <x:int> <y:int> <z:int> <health:double>`
+- `<target:String> <name:string> <x:int> <y:int> <z:int> <dimension:String> <health:double>`
+
+- `<dimensions>` see [dimensions](#dimensions)
 
 #### Example
 

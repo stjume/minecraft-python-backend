@@ -36,6 +36,7 @@ public class GetEntity extends Command {
         int x = loc.getBlockX();
         int y = loc.getBlockY();
         int z = loc.getBlockZ();
+        String world = loc.getWorld().getName();
         double health = 0;
         boolean ai = false;
         if(ent instanceof LivingEntity lent) {
@@ -44,7 +45,7 @@ public class GetEntity extends Command {
         }
         String type = ent.getType().toString();
 
-        String result = SkMinecraft.joinWithSeperator(uuid, type, name, x, y, z, health, ai);    
+        String result = SkMinecraft.joinWithSeperator(uuid, type, name, x, y, z, world, health, ai);    
         return result;
     }
 
