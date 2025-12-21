@@ -6,10 +6,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
-import java.util.Arrays;
-import java.util.HashMap;
 
 public class AddInventory extends Command{
 
@@ -21,47 +20,37 @@ public class AddInventory extends Command{
     private int slot;
     private boolean unbreakable;
 
-    public AddInventory(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
-
-        if(parts.length < 4) {
-            this.valid = false;
-            return;
-        }
-
-        try {
-            this.playerIndex = Integer.parseInt(parts[1]);
-            this.amount = Integer.parseInt(parts[3]);
-        } catch(NumberFormatException e){
-            this.valid = false;
-            return;
-        }
-
-        if(playerIndex < 0 || playerIndex >= Bukkit.getOnlinePlayers().toArray(new Player[0]).length) {
-            this.valid = false;
-            return;
-        }
-
-        String blockId = parts[2].toUpperCase();
-        this.material = Material.matchMaterial(blockId);
-
-        if(this.material == null) {
-            this.valid = false;
-            return;
-        }
-
+    public AddInventory(StringCommand command) {
         ArgumentParser parser = new ArgumentParser();
 
-        parser.addArgument("name", ArgumentParser.StringParser, "");
-        parser.addArgument("slot", Integer::parseInt, -1);
+        parser.addPositionalArguments(
+            ArgumentParser.IntParser,
+            ArgumentParser.StringParser,
+            ArgumentParser.IntParser
+        );
+
+        parser.addOptionalArgument("name", ArgumentParser.StringParser, "");
+        parser.addOptionalArgument("slot", Integer::parseInt, -1);
 
         parser.addFlag("unbreakable");
 
-        HashMap<String,ArgumentParser.ArgumentResult> result = parser.parse(Arrays.copyOfRange(parts,4, parts.length));
+        ParseResult result = parser.parse(command.arguments());
 
-        this.name = result.get("name").asString();
-        this.slot = result.get("slot").asInt();
-        this.unbreakable = result.get("unbreakable").asBool();
+        if(!this.isValid()) {
+            this.valid = false;
+            return;
+        }
+
+        this.playerIndex = result.getPositional(0);
+
+        String blockId = result.getPositional(1);
+        this.material = Material.matchMaterial(blockId.toUpperCase());
+
+        this.amount = result.getPositional(2);
+
+        this.name = result.getOptional("name");
+        this.slot = result.getOptional("slot");
+        this.unbreakable = result.getOptional("unbreakable");
     }
 
     @Override
