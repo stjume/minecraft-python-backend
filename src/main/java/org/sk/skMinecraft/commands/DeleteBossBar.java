@@ -3,21 +3,28 @@ package org.sk.skMinecraft.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.boss.KeyedBossBar;
-import org.sk.skMinecraft.SkMinecraft;
+import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class DeleteBossBar extends Command {
 
     private String name;
 
-    public DeleteBossBar(String command) {
-        String[] parts = command.split(SkMinecraft.seperator);
+    public DeleteBossBar(StringCommand command) {
+        ArgumentParser parser = new ArgumentParser();
 
-        if(parts.length != 2) {
+        parser.addPositionalArguments(
+            ArgumentParser.StringParser
+        );
+
+        ParseResult result = parser.parse(command.arguments());
+
+        if(!result.isValid()) {
             this.valid = false;
             return;
         }
 
-        this.name = parts[1];
+        this.name = result.getPositional(0);
     }
 
     @Override
