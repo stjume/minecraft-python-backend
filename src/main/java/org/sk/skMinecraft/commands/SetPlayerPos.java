@@ -44,9 +44,9 @@ public class SetPlayerPos extends Command {
         String worldName = result.getPositional(4);
         this.world = Bukkit.getWorld(worldName);
 
-        this.setRot = result.isSet("rot");
+        this.setRot = result.isSet("rotation");
         if(this.setRot) {
-            this.rot = result.getOptional("rot");
+            this.rot = result.getOptional("rotation");
         }
     }
 
