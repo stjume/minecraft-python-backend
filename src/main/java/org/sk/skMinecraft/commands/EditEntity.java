@@ -7,13 +7,9 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import org.sk.skMinecraft.data.Position;
 
 public class EditEntity extends Command {
-
     private String target;
 
     private boolean setAi;
@@ -21,6 +17,7 @@ public class EditEntity extends Command {
 
     private boolean setPosition;
     private int x,y,z;
+    private World world;
 
     private String name;
 
@@ -35,7 +32,7 @@ public class EditEntity extends Command {
         );
 
         parser.addOptionalArgument("ai", Boolean::parseBoolean);
-        parser.addOptionalArgument("position", arg-> Arrays.stream(arg.split(";")).map(Integer::parseInt).collect(Collectors.toList()));
+        parser.addOptionalArgument("position", arg -> Position.fromString(arg, ";"));
         parser.addOptionalArgument("name", ArgumentParser.StringParser);
         parser.addOptionalArgument("health", Double::parseDouble);
 
@@ -55,10 +52,11 @@ public class EditEntity extends Command {
 
         this.setPosition = result.isSet("position");
         if(this.setPosition) {
-            List<Integer> positions = result.getOptional("position");
-            this.x = positions.get(0);
-            this.y = positions.get(1);
-            this.z = positions.get(2);
+            Position position = result.getOptional("position");
+            this.x = position.x;
+            this.y = position.y;
+            this.z = position.z;
+            this.world = position.world;
         }
 
         this.name = result.getOptional("name");
@@ -101,6 +99,7 @@ public class EditEntity extends Command {
                 loc.setX(this.x);
                 loc.setY(this.y);
                 loc.setZ(this.z);
+                loc.setWorld(this.world);
                 ent.teleport(loc);
             }
 

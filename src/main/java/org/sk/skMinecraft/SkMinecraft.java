@@ -77,8 +77,8 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
     private void startTcpListener() {
         tcpListenerThread = new Thread(() -> {
             try {
-                serverSocket = new ServerSocket(12345); // Use your desired port
-                getLogger().info("TCP server started on port 12345");
+                serverSocket = new ServerSocket(25595);
+                getLogger().info("TCP server started on port 25595");
 
                 while (!serverSocket.isClosed()) {
                     Socket client = serverSocket.accept();

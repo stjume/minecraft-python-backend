@@ -25,7 +25,6 @@ public class SetPlayerVelocity extends Command {
         parser.addPositionalArguments(
             ArgumentParser.StringParser,
             ArgumentParser.IntParser,
-            ArgumentParser.IntParser,
             ArgumentParser.DoubleParser
         );
 

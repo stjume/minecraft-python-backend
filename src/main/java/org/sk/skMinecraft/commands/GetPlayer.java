@@ -49,6 +49,7 @@ public class GetPlayer extends Command {
         int x = loc.getBlockX();
         int y = loc.getBlockY();
         int z = loc.getBlockZ();
+        String world_name = loc.getWorld().getName();
         int rotation = (int)loc.getYaw();
         boolean sneak = target.isSneaking();
         double maxhealth = target.getAttribute(Attribute.MAX_HEALTH).getBaseValue();
@@ -64,6 +65,7 @@ public class GetPlayer extends Command {
             x,
             y,
             z,
+            world_name,
             rotation,
             looking_at,
             sneak,

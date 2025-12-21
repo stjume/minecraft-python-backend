@@ -44,10 +44,17 @@ pause
 - Throughout the commands there are references to indices of online players, it is important to note that currently the index is completly based on the order the players joined in and will change if the players disconnect and rejoin. Currently there is no way to identify the players unqiuely based on a id.
   - You can of course still differantiate the players based on their names
 
+#### Dimensions
+
+- Currently the following dimensions are available
+  - `world`: the normal overworld
+  - `world_nether`: The Nether
+  - ` world_the_end`: The End
+
 ### Player
 
 - `getPlayer <index:int>` gets information about a player. [Details](#command-getplayer)
-- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> ?rotation:int?` Set the player position [Details](#command-setplayerpos)
+- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> <dimension> ?rotation:int?` Set the player position [Details](#command-setplayerpos)
 - `setPlayerStat <type:string> <playerIndex:int> <value:double>` Set a player stat [Details](#command-setplayerstat)
 - `showTitle <playerIndex:int> <title:String> <subtitle:String> <fadeIn:int> <stay:int> <fadeOut:int>` Show a Title to players [Details](#command-showtitle)
 
@@ -58,8 +65,8 @@ pause
 
 ## Block
 
-- `setBlock <x:int> <y:int> <z:int> <blockid:String>` Set a block at a location [Deailts](#command-setblock)
-- `getBlock <x:int> <y:int> <z:int>` gets information about a block [Details](#command-getblock)
+- `setBlock <x:int> <y:int> <z:int> <dimension:String> <blockid:String>` Set a block at a location [Deailts](#command-setblock)
+- `getBlock <x:int> <y:int> <z:int> <dimension:String>` gets information about a block [Details](#command-getblock)
 
 ## Chat
 
@@ -69,8 +76,8 @@ pause
 
 ### Entity
 
-- `spawnEntity <x:int> <y:int> <z:int> <entityid:String>` [Details](#command-spawnentity)
-- `editEntity <target:String> ?name:String? ?position:x;y;z? ?ai:boolean?` [Details](#command-editentity)
+- `spawnEntity <x:int> <y:int> <z:int> <dimension:String> <entityid:String>` [Details](#command-spawnentity)
+- `editEntity <target:String> ?name:String? ?position:x;y;z;dimension? ?ai:boolean?` [Details](#command-editentity)
 - `getEntity <target:String>` [Details](#command-getentity)
 
 ### Boss Bar
@@ -124,10 +131,10 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 
 #### Returns
 
-- `<index:int> <name:String> <x:int> <y:int> <z:int> <rotation:int> <looking_at_block:String> <sneak:boolean> <max_health:double> <health:double> <food_level:double> <saturation: double> <xp_level:int> <xp_progress:double>`
+- `<index:int> <name:String> <x:int> <y:int> <z:int> <dimension:String> <rotation:int> <looking_at_block:String> <sneak:boolean> <max_health:double> <health:double> <food_level:double> <saturation: double> <xp_level:int> <xp_progress:double>`
   - `<index>` the index of the player
   - `<name>` the name of the player
-  - `<x>, <y>, <z>` The tile position of the player
+  - `<x>, <y>, <z>` `<dimension>` The tile position of the player (see [dimensions](#dimensions))
   - `<rotation>` The minecraft rotation of the player.
   - `<looking_at_block>` The block type the player is looking at
   - `<sneak>` depending of wether or not the player is sneaking `true` or `false`
@@ -249,21 +256,22 @@ getInv 0
 
 ### Command: setPlayerPos
 
-- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> ?rotation:int?`
+- `setPlayerPos <playerindex:int> <x:int> <y:int> <z:int> <dimension:String> ?rotation:int?`
 
 #### Args
 
 - `playerIndex` the index of the online player
-- `<x>, <y>, <z>` the new position of the player
+- `<x:>, <y>, <z> <dimension>` the new position of the player (see [dimensions](#dimensions))
 - `?rotation?` optionaly the direction the player should be looking in
 
 ### Command: setBlock
 
-- `setBlock <x:int> <y:int> <z:int> <blockid:String>` Set a block at a location
+- `setBlock <x:int> <y:int> <z:int> <dimension:String> <blockid:String>` Set a block at a location
 
 #### Args
 
 - `<x> <y> <z>` position of the block
+- `<dimension>` see [dimensions](#dimensions)
 - `<blockid>` the block id as a string i.e. "stone"
 
 #### Example
@@ -275,11 +283,12 @@ setBlock 10 10 10 stone
 
 ### Command: getBlock
 
-- `getBlock <x:int> <y:int> <z:int>` gets information about a block
+- `getBlock <x:int> <y:int> <z:int> <dimension:String>` gets information about a block
 
 #### Args
 
 - `<x> <y> <z>:int int int` position of the block
+- `<dimension>` see [dimensions](#dimensions)
 
 #### Example
 
@@ -335,11 +344,12 @@ Player1:2025|12|21|17|49|27:0:This is a message:2025|12|21|17|49|29:1:Message 2
 
 ### Command: spawnEntity
 
-- `spawnEntity <x:int> <y:int> <z:int> <entityid:String>` Spawns an entity
+- `spawnEntity <x:int> <y:int> <z:int> <dimension:String> <entityid:String>` Spawns an entity
 
 #### Args
 
 - `<x> <y> <z>` position
+- `<dimension>` see [dimensions](#dimensions) 
 - `<entityid>` a string with entity id full list can be cound here: [Entities](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)
 
 #### Returns
@@ -355,13 +365,13 @@ ff568527-7c0c-4536-aed2-ef77429d61b8
 
 ### Command: editEntity
 
-- `editEntity <target:String> ?name:String? ?position:x;y;z? ?ai:boolean?` Edits a existing entity which was previously spawned by the `spawnEntity` command
+- `editEntity <target:String> ?name:String? ?position:x;y;z;dimension? ?ai:boolean?` Edits a existing entity which was previously spawned by the `spawnEntity` command
 
 #### Args
 
 - `target` is the uuid returned by `spawnEntity`
 - `name` if is set the entites custom name is changed
-- `position`if  is set the entities position will be set to the given x,y,z coordinates
+- `position`if  is set the entities position will be set to the given x,y,z coordinates as well as the [dimension](#dimensions) ,
 - `ai` sets the ai of the entity, if its turned off the entity will not move.
 
 #### Example
@@ -381,7 +391,9 @@ editEntity ff568527-7c0c-4536-aed2-ef77429d61b8 name:Zomb position:10;10;200 ai:
 
 #### Returns
 
-- `<target:String> <name:string> <x:int> <y:int> <z:int> <health:double>`
+- `<target:String> <name:string> <x:int> <y:int> <z:int> <dimension:String> <health:double>`
+
+- `<dimensions>` see [dimensions](#dimensions)
 
 #### Example
 
