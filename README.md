@@ -8,6 +8,8 @@ A simple minecraft plugin for sending commands to a server.
 
 `The plugin was developed with spigot version 1.21.5` [download](https://getbukkit.org/download/spigot).
 
+We maintain a compatible [python frontend library](https://github.com/stjume/minecraft-python) available in english and german.
+
 ## Building
 
 This project can be build using maven, just run the mvn command in the directory and it will build the `target/sk-mincraft-1.0.jar`:
