@@ -29,15 +29,7 @@ public class GetPlayer extends Command {
         this.playerIndex = arguments.getPositional(0);
     }
 
-    @Override
-    public void apply() {
-        Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
-        if(playerIndex < 0 || playerIndex >= players.length) {
-            writer.println("error invalid_index");
-            return;
-        }
-
-        Player target = players[playerIndex];
+    public static String convertPlayerToString(Player target, int playerIndex) {
         // String name = target.getDisplayName();
         String name = target.getName();
         String looking_at = "AIR";
@@ -59,7 +51,7 @@ public class GetPlayer extends Command {
         double xp_level = target.getLevel();
         double xp_progress = target.getExp();
 
-        String result = SkMinecraft.joinWithSeperator(
+        return SkMinecraft.joinWithSeperator(
             playerIndex,
             name,
             x,
@@ -76,6 +68,19 @@ public class GetPlayer extends Command {
             xp_level,
             xp_progress
         );
+    }
+
+    @Override
+    public void apply() {
+        Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
+        if(playerIndex < 0 || playerIndex >= players.length) {
+            writer.println("error invalid_index");
+            return;
+        }
+
+        Player target = players[playerIndex];
+        
+        String result = GetPlayer.convertPlayerToString(target, playerIndex);
 
         writer.println(result);
     }
