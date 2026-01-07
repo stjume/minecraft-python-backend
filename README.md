@@ -61,6 +61,7 @@ pause
 ### Player
 
 - `getPlayer𝇉<index:int>` gets information about a player. [Details](#command-getplayer)
+- `getPlayerByName𝇉<name:String>` gets information about a player by name
 - `setPlayerPos𝇉<playerindex:int>𝇉<x:int>𝇉<y:int>𝇉<z:int>𝇉<dimension>𝇉?rotation:int?` Set the player position [Details](#command-setplayerpos)
 - `setPlayerStat𝇉<type:string>𝇉<playerIndex:int>𝇉<value:double>` Set a player stat [Details](#command-setplayerstat)
 - `showTitle𝇉<playerIndex:int𝇉<title:String>𝇉<subtitle:String>𝇉<fadeIn:int>𝇉<stay:int>𝇉<fadeOut:int>` Show a Title to players [Details](#command-showtitle)
@@ -130,7 +131,7 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 
 ### Command: getPlayer
 
-- `𝇉<index:int>` gets information about a player
+- `getPlayer𝇉<index:int>` gets information about a player
 
 #### Args
 
@@ -162,6 +163,27 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 ```bash
 getPlayer𝇉0
 0𝇉Player1𝇉39𝇉83𝇉72𝇉17𝇉STONE𝇉false
+```
+
+### Command: GetPlayerByName
+
+- `getPlayerByName𝇉<name:String>` gets information about a player by name
+
+#### Args
+
+- `name` the name of the player
+
+#### Returns 
+
+- If the player does **not** exist: "error player_not_found"
+- If the player exists see [GetPlayer](#command-getplayer)
+
+
+#### Example
+
+```bash
+getPlayerByName𝇉Player1
+error player_not_found
 ```
 
 ### Command: setPlayerStat
