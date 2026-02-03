@@ -1,7 +1,3 @@
-> [!CAUTION]
-> This library is in early development. We currently only permit private use. Any sort of commertial use is prohibited. This might change with future versions, when a final license is chosen.
-
-
 # Minecraft Python Backend
 
 A simple minecraft plugin for sending commands to a server.
