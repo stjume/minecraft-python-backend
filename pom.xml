@@ -6,7 +6,7 @@
 
     <groupId>org.sk</groupId>
     <artifactId>stminecraft</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>stminecraft</name>
