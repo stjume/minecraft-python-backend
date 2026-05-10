@@ -11,6 +11,21 @@
 
     <name>stminecraft</name>
 
+    <developers>
+        <developer>
+            <name>Adrian Oeyen</name>
+            <email>oeyenadrian@gmail.com</email>
+        </developer>
+        <developer>
+            <name>Chris Geron</name>
+            <email>git@chris-ge.de</email>
+        </developer>
+        <developer>
+            <name>sk stiftung jugend und medien der Sparkasse KölnBonn</name>
+            <email>info@sk-jugend.de</email>
+        </developer>
+    </developers>
+
     <properties>
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
