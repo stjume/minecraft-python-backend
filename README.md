@@ -4,31 +4,35 @@ A simple minecraft plugin for sending commands to a server.
 
 `The plugin was developed with spigot version 1.21.5` [download](https://getbukkit.org/download/spigot).
 
+You can download all released versions of this plugin (incl. built `.jar`) in our [releases](https://github.com/stjume/minecraft-python-backend/releases).
+
 We maintain a compatible [python frontend library](https://github.com/stjume/minecraft-python) available in english and german.
 
-## Building
+(You need to ensure that major and minor tag of plugin and library release must match! e.g. both must be `v1.1.x`)
 
-This project can be build using maven, just run the mvn command in the directory and it will build the `target/sk-mincraft-1.0.jar`:
 
-```bash
-mvn
-```
+## Creating the Server
+Note.: We describe the process for Windows, because it's the platform we use.
+The linked instructions also cover MacOS and Linux.
 
-### Creating the Server
-Follow the [instructions](https://www.spigotmc.org/wiki/spigot-installation/#windows).
+Follow these [instructions](https://www.spigotmc.org/wiki/spigot-installation/#windows).
 Basically.:
 - Create an arbitrary folder
   - Create a new file (`.txt` is the simplest)
-  - Put these three lines below in it (make sure to replace the version in the .jar's filename if needed.
-  - Rename the file to `start.bat` (accept window's warning, we want the file to be executable).
+  - Put the three lines below (`java -X ...`) in it.
+  - Rename the file to `start.bat` (accept the window's warning, we want the file to be executable).
   - Put the downloaded server-jar in the folder, next to the bat
   - Create a new folder inside your current folder, name it `plugins`
-  - Put the plugin-jar, you built or downloaded in it
+  - Put the plugin-jar, you downloaded or built in it
+  - You can now start the server by double clicking the `start.bat`
   
- ```@echo off
+ ```
+ @echo off
 java -Xms#G -Xmx#G -XX:+UseG1GC -jar spigot-1.21.5.jar nogui
 pause
 ```
+(You may need to exchange the version number of the `spigot.jar` in the pasted text with the version downloaded. 
+Make sure that the downloaded version matches the version we state at the beginning of this readme).
 
 ## Usage
 
@@ -36,6 +40,14 @@ pause
 - Then you can connect to the plugin via tcp on port `25595`.
 - Send each command as a message over tcp, the message has to end with a newline.
 - Each command is a commandname followed by a number of arguments. For explanation of the argument types see: [Arguments](#argument-types)
+
+### Building from Source
+
+This project can be build using maven, just run the mvn command in the directory and it will build the `target/sk-mincraft-*.jar`:
+
+```bash
+mvn
+```
 
 ## Protocol Glossary
 
