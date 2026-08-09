@@ -9,9 +9,9 @@ import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class SetPlayerPos extends Command {
 
-    private int x;
-    private int y;
-    private int z;
+    private double x;
+    private double y;
+    private double z;
     private World world;
     private int rot;
     private boolean setRot;
@@ -22,9 +22,9 @@ public class SetPlayerPos extends Command {
 
         parser.addPositionalArguments(
             ArgumentParser.IntParser,
-            ArgumentParser.IntParser,  
-            ArgumentParser.IntParser, 
-            ArgumentParser.IntParser,
+            ArgumentParser.DoubleParser,
+            ArgumentParser.DoubleParser,  
+            ArgumentParser.DoubleParser, 
             ArgumentParser.StringParser
         );
 

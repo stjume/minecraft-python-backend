@@ -16,7 +16,7 @@ public class EditEntity extends Command {
     private boolean ai;
 
     private boolean setPosition;
-    private int x,y,z;
+    private double x,y,z;
     private World world;
 
     private String name;

@@ -11,7 +11,7 @@ import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 public class SpawnEntity extends Command{
 
-    private int x,y,z;
+    private double x,y,z;
     private World world;
     private EntityType type;
 
@@ -19,9 +19,9 @@ public class SpawnEntity extends Command{
         ArgumentParser parser = new ArgumentParser();
 
         parser.addPositionalArguments(
-            ArgumentParser.IntParser,
-            ArgumentParser.IntParser,
-            ArgumentParser.IntParser,
+            ArgumentParser.DoubleParser,
+            ArgumentParser.DoubleParser,
+            ArgumentParser.DoubleParser,
             ArgumentParser.StringParser,
             ArgumentParser.StringParser
         );

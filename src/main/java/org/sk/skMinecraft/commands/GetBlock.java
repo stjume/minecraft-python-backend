@@ -15,9 +15,9 @@ public class GetBlock extends Command{
         ArgumentParser parser = new ArgumentParser();
 
         parser.addPositionalArguments(
-            ArgumentParser.IntParser,
-            ArgumentParser.IntParser,
-            ArgumentParser.IntParser,
+            ArgumentParser.DoubleParser,
+            ArgumentParser.DoubleParser,
+            ArgumentParser.DoubleParser,
             ArgumentParser.StringParser
         );
 
@@ -28,10 +28,14 @@ public class GetBlock extends Command{
             return;
         }
 
-        this.x = result.getPositional(0);
-        this.y = result.getPositional(1);
-        this.z = result.getPositional(2);
+        double x = result.getPositional(0);
+        double y = result.getPositional(1);
+        double z = result.getPositional(2);
         
+        this.x = (int)x;
+        this.y = (int)y;
+        this.z = (int)z;
+
         String worldName = result.getPositional(3);
         this.world = Bukkit.getWorld(worldName);
     }

@@ -38,9 +38,9 @@ public class GetPlayer extends Command {
         }catch(Exception e){}
         
         Location loc = target.getLocation();
-        int x = loc.getBlockX();
-        int y = loc.getBlockY();
-        int z = loc.getBlockZ();
+        double x = loc.getX();
+        double y = loc.getY();
+        double z = loc.getZ();
         String world_name = loc.getWorld().getName();
         int rotation = (int)loc.getYaw();
         boolean sneak = target.isSneaking();
