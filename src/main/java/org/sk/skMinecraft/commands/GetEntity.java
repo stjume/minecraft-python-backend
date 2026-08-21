@@ -33,9 +33,9 @@ public class GetEntity extends Command {
     public static String informationString(String uuid, Entity ent) {
         String name = ent.getCustomName();
         Location loc = ent.getLocation();
-        int x = loc.getBlockX();
-        int y = loc.getBlockY();
-        int z = loc.getBlockZ();
+        double x = loc.getX();
+        double y = loc.getY();
+        double z = loc.getZ();
         String world = loc.getWorld().getName();
         double health = 0;
         boolean ai = false;

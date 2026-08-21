@@ -24,7 +24,9 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
     private ServerSocket serverSocket;
 
     public static String seperator = "𝇉";
-    public record StringCommand(String name, String[] arguments) {};
+
+    public record StringCommand(String name, String[] arguments) {
+    };
 
     public static String joinWithSeperator(Object... args) {
         String result = "";
@@ -36,14 +38,18 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
                 arg_i = "null";
             }
 
-            result += arg_i.toString();
+            if(arg_i instanceof Double ){
+                result += String.format("%.3f", arg_i);
+            } else {
+                result += arg_i.toString();
+            }
             if(i < args.length - 1) {
                 result += SkMinecraft.seperator;
             }
         }  
 
         return result;
-    } 
+    }
 
     public static StringCommand splitCommand(String command) {
         String[] parts = command.split(SkMinecraft.seperator);
@@ -53,8 +59,8 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
     public static int playerIndexFromName(String name) {
         Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
 
-        for(int i = 0;i < players.length;i++){
-            if(players[i].getName().equals(name)) {
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].getName().equals(name)) {
                 return i;
             }
         }
@@ -119,23 +125,24 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
     private void handleClient(Socket client) {
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-                PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
-        ) {
+                PrintWriter writer = new PrintWriter(client.getOutputStream(), true);) {
             CommandFactory commandFactory = new CommandFactory();
 
             String line;
             while ((line = reader.readLine()) != null) {
                 final String command = line.trim();
-                if (line.isEmpty()) continue;
+                if (line.isEmpty())
+                    continue;
 
                 getLogger().info("Received: " + command);
 
                 StringCommand stringCommand = splitCommand(command);
                 Command commandObject = commandFactory.build(stringCommand);
 
-                if(commandObject == null) continue;
+                if (commandObject == null)
+                    continue;
 
-                if(!commandObject.isValid()) {
+                if (!commandObject.isValid()) {
                     System.out.println("Invalid");
                     continue;
                 }
@@ -150,4 +157,4 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
             getLogger().severe("TCP client error: " + e.getMessage());
         }
     }
- }
+}

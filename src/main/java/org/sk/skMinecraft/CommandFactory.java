@@ -47,6 +47,7 @@ public class CommandFactory {
     }
 
     public Command build(StringCommand command) {
+        System.out.println("Name: " + command.name());
         return this.commands.get(command.name()).apply(command);
     }
 }
