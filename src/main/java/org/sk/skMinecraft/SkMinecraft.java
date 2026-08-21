@@ -71,11 +71,11 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
         CompletableFuture<String> future = new CompletableFuture<>();
 
         Bukkit.getScheduler().runTask(plugin, () -> {
-            String result = "";
+            String result;
             try {
                 result = task.get();
             } catch(Exception e) {
-                result = "";
+                result = SkMinecraft.getFailMessage();
             }
 
             future.complete(result);
