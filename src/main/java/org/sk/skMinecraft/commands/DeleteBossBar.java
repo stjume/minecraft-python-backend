@@ -3,6 +3,7 @@ package org.sk.skMinecraft.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.boss.KeyedBossBar;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
@@ -38,5 +39,6 @@ public class DeleteBossBar extends Command {
                bossBar.removeAll();
             }
         });
+        this.writer.println(SkMinecraft.getSuccessMessage());
     }
 }

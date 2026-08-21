@@ -51,6 +51,10 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
         return result;
     }
 
+    public static String getSuccessMessage(){
+        return joinWithSeperator(seperator + "success" + seperator);
+    }
+
     public static StringCommand splitCommand(String command) {
         String[] parts = command.split(SkMinecraft.seperator);
         return new StringCommand(parts[0], Arrays.copyOfRange(parts, 1, parts.length));
@@ -144,6 +148,7 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
 
                 if (!commandObject.isValid()) {
                     System.out.println("Invalid");
+                    writer.println("Received command is invalid: " + command);
                     continue;
                 }
 
