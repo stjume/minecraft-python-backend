@@ -17,6 +17,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public final class SkMinecraft extends JavaPlugin implements Listener {
 
@@ -55,9 +58,30 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
         return joinWithSeperator(seperator + "success" + seperator);
     }
 
+    public static String getFailMessage(){
+        return joinWithSeperator(seperator + "failed" + seperator);
+    }
+
     public static StringCommand splitCommand(String command) {
         String[] parts = command.split(SkMinecraft.seperator);
         return new StringCommand(parts[0], Arrays.copyOfRange(parts, 1, parts.length));
+    }
+
+    public static String runBukkitTaskSync(JavaPlugin plugin, Supplier<String> task) {
+        CompletableFuture<String> future = new CompletableFuture<>();
+
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            String result = "";
+            try {
+                result = task.get();
+            } catch(Exception e) {
+                result = "";
+            }
+
+            future.complete(result);
+        });
+
+        return future.join();
     }
 
     public static int playerIndexFromName(String name) {
@@ -155,6 +179,11 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
                 commandObject.setParameters(writer, this);
 
                 commandObject.apply();
+
+                // This output would be provided by .apply();
+                String output = "";
+
+                writer.println(output);
             }
 
             client.close();
