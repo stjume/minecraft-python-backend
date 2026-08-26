@@ -34,9 +34,9 @@ public class SetBlock extends Command {
         double y = result.getPositional(1);
         double z = result.getPositional(2);
 
-        this.x = (int)x;
-        this.y = (int)y;
-        this.z = (int)z;
+        this.x = (int)Math.floor(x);
+        this.y = (int)Math.floor(y);
+        this.z = (int)Math.floor(z);
 
         String worldName = result.getPositional(3);
         this.world = Bukkit.getWorld(worldName);
