@@ -2,6 +2,7 @@ package org.sk.skMinecraft.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
@@ -54,6 +55,7 @@ public class ShowTitle extends Command {
             
             players[this.player].sendTitle(this.title, this.subtitle, this.fadeIn, this.stay, this.fadeOut);
         }
+        this.writer.println(SkMinecraft.getSuccessMessage());
         
     }
 

@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
@@ -69,5 +70,6 @@ public class SetPlayerStat extends Command {
                 case XP_PROGRESS -> target.setExp((float)this.value);
             }
         });
+        this.writer.println(SkMinecraft.getSuccessMessage());
     }
 }

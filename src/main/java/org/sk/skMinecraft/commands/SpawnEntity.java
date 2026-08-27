@@ -6,6 +6,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.sk.skMinecraft.CentralResourceHandler;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
@@ -55,5 +56,6 @@ public class SpawnEntity extends Command{
             String output = GetEntity.informationString(uuid, entity);
             writer.println(output);
         });
+        this.writer.println(SkMinecraft.getSuccessMessage());
     }
 }
