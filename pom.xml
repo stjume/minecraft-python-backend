@@ -27,12 +27,44 @@
     </developers>
 
     <properties>
-        <java.version>25</java.version>
+        <!-- Defaults are overridden by the build profiles below; see the mc1.21 / mc26 profiles. -->
+        <java.version>21</java.version>
+        <spigot.version>1.21.4-R0.1-SNAPSHOT</spigot.version>
+        <plugin.api.version>1.21</plugin.api.version>
+        <build.target>mc1.21</build.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <profiles>
+        <!-- Legacy target: Minecraft 1.21.x on Java 21. Active unless another profile is selected. -->
+        <profile>
+            <id>mc1.21</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <java.version>21</java.version>
+                <spigot.version>1.21.4-R0.1-SNAPSHOT</spigot.version>
+                <plugin.api.version>1.21</plugin.api.version>
+                <build.target>mc1.21</build.target>
+            </properties>
+        </profile>
+
+        <!-- Current target: Minecraft 26.x on Java 25. Select with -Pmc26. -->
+        <profile>
+            <id>mc26</id>
+            <properties>
+                <java.version>25</java.version>
+                <spigot.version>26.3-R0.1-SNAPSHOT</spigot.version>
+                <plugin.api.version>26</plugin.api.version>
+                <build.target>mc26</build.target>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <defaultGoal>clean package</defaultGoal>
+        <finalName>${project.artifactId}-${project.version}-${build.target}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -79,7 +111,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <version>${spigot.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

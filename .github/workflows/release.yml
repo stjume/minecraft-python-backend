@@ -6,25 +6,32 @@ on:
       - "v*"
 
 jobs:
-  build-and-release:
-    name: Build & publish release
+  build:
+    name: Build ${{ matrix.target }} (Java ${{ matrix.java }})
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: mc1.21
+            java: "21"
+          - target: mc26
+            java: "25"
 
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Set up Java 25
+      - name: Set up Java ${{ matrix.java }}
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "25"
+          java-version: ${{ matrix.java }}
           cache: maven
 
       - name: Build with Maven
-        run: mvn --batch-mode clean package -DskipTests
+        run: mvn --batch-mode clean package -DskipTests -P${{ matrix.target }}
 
       - name: Locate shaded JAR
         id: jar
@@ -33,17 +40,39 @@ jobs:
           echo "path=$JAR" >> "$GITHUB_OUTPUT"
           echo "name=$(basename $JAR)" >> "$GITHUB_OUTPUT"
 
+      - name: Generate SHA-256 checksum
+        run: |
+          cd target
+          sha256sum "${{ steps.jar.outputs.name }}" > "${{ steps.jar.outputs.name }}.sha256"
+
       - name: Upload artifact (retained for 90 days)
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.jar.outputs.name }}
-          path: ${{ steps.jar.outputs.path }}
+          name: jar-${{ matrix.target }}
+          path: |
+            ${{ steps.jar.outputs.path }}
+            ${{ steps.jar.outputs.path }}.sha256
           retention-days: 90
 
-      - name: Generate SHA-256 checksum
-        run: sha256sum ${{ steps.jar.outputs.path }} > ${{ steps.jar.outputs.name }}.sha256
+  release:
+    name: Publish release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
-      - name: Create GitHub release and attach JAR
+    steps:
+      - name: Collect build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: jar-*
+          merge-multiple: true
+          path: dist
+
+      - name: List release assets
+        run: ls -la dist
+
+      - name: Create GitHub release and attach JARs
         uses: softprops/action-gh-release@v2
         with:
           name: "stminecraft ${{ github.ref_name }}"
@@ -52,5 +81,5 @@ jobs:
           generate_release_notes: true
           fail_on_unmatched_files: true
           files: |
-            ${{ steps.jar.outputs.path }}
-            ${{ steps.jar.outputs.name }}.sha256
+            dist/*.jar
+            dist/*.sha256
