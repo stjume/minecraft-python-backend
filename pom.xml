@@ -56,7 +56,7 @@
             <properties>
                 <java.version>25</java.version>
                 <spigot.version>26.3-R0.1-SNAPSHOT</spigot.version>
-                <plugin.api.version>26</plugin.api.version>
+                <plugin.api.version>26.0</plugin.api.version>
                 <build.target>mc26</build.target>
             </properties>
         </profile>
