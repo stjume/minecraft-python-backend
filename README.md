@@ -43,11 +43,23 @@ Make sure that the downloaded version matches the version we state at the beginn
 
 ### Building from Source
 
-This project can be build using maven, just run the mvn command in the directory and it will build the `target/sk-mincraft-*.jar`:
+This project can be built using maven.
+There are two build targets, one per supported Minecraft generation.
+
+For Minecraft 1.21.x (default), just run the mvn command in the directory and it will build `target/stminecraft-*-mc1.21.jar`:
 
 ```bash
-mvn
+mvn clean package
 ```
+
+For Minecraft 26.x, select the `mc26` profile, which builds `target/stminecraft-*-mc26.jar`:
+
+```bash
+mvn clean package -Pmc26
+```
+_Note_: Version 26.x is experimental only.
+
+The 1.21.x target needs a Java 21 JDK, the 26.x target needs a Java 25 JDK.
 
 ## Protocol Glossary
 
