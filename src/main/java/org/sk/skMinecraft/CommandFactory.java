@@ -18,6 +18,7 @@ public class CommandFactory {
 
         this.commands.put("getPlayer", GetPlayer::new);
         this.commands.put("getPlayerByName", GetPlayerByName::new);
+        this.commands.put("getAllPlayers", GetAllPlayers::new);
         this.commands.put("setPlayerStat", SetPlayerStat::new);
         this.commands.put("setPlayerVelocity", SetPlayerVelocity::new);
 
