@@ -4,6 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
@@ -50,7 +53,18 @@ public class GetPlayer extends Command {
         double saturation = target.getSaturation();
         double xp_level = target.getLevel();
         double xp_progress = target.getExp();
+        PlayerInventory inventory = target.getInventory();
+        
+        int heldIndex = inventory.getHeldItemSlot();
+        String heldItemString = Integer.toString(heldIndex) + "+;:";
+        heldItemBlock: {
+            ItemStack heldItemStack = inventory.getItem(heldIndex);
+            if(heldItemStack == null) break heldItemBlock;
 
+            ItemMeta meta = heldItemStack.getItemMeta();
+            heldItemString = heldIndex + "+" + heldItemStack.getType().name() + ";" + meta.getDisplayName() + ":" + heldItemStack.getAmount();
+        }
+        
         return SkMinecraft.joinWithSeperator(
             playerIndex,
             name,
@@ -66,7 +80,8 @@ public class GetPlayer extends Command {
             hunger,
             saturation,
             xp_level,
-            xp_progress
+            xp_progress,
+            heldItemString
         );
     }
 
