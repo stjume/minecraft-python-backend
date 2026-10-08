@@ -206,6 +206,21 @@ getPlayerByName𝇉Player1
 error player_not_found
 ```
 
+### Command: getAllPlayers
+
+- `getAllPlayers` gets all Players names ordered by their index
+
+#### Returns
+
+- All player names ordered by index seperated by the seperator.
+
+#### Example
+
+```bash
+getAllPlayers
+Player1𝇉Player2𝇉Player3
+```
+
 ### Command: setPlayerStat
 
 - `setPlayerStat𝇉<type:string>𝇉<playerIndex:int>𝇉<value:double>`
