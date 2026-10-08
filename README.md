@@ -163,6 +163,7 @@ Flags are arguments that toggle an effect, the send command just needs to contai
   - `<index>` the index of the player
   - `<name>` the name of the player
   - `<x>, <y>, <z>` `<dimension>` The tile position of the player (see [dimensions](#dimensions))
+  - `<world>` The current world of the player
   - `<rotation>` The minecraft rotation of the player.
   - `<looking_at_block>` The block type the player is looking at
   - `<sneak>` depending of wether or not the player is sneaking `true` or `false`
@@ -172,6 +173,7 @@ Flags are arguments that toggle an effect, the send command just needs to contai
   - `<saturation>` The players saturation level
   - `<xp_level>` The level number of the player
   - `<xp_progress>` The current progress of the player along the progress bar, will be between 0 and 1
+  - `<held_item>` The currently held item as `<index>+<item-type>;<item-display-name>:<amount>`
 
 #### Notes
 
@@ -182,7 +184,7 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 
 ```bash
 getPlayer𝇉0
-0𝇉Player1𝇉39𝇉83𝇉72𝇉17𝇉STONE𝇉false
+0𝇉Player1𝇉-6.046𝇉64.000𝇉-5.352𝇉world𝇉101𝇉GRASS_BLOCK𝇉false𝇉10.000𝇉10.000𝇉20.000𝇉5.000𝇉0.000𝇉0.000𝇉1+WHEAT_SEEDS;:1
 ```
 
 ### Command: GetPlayerByName
