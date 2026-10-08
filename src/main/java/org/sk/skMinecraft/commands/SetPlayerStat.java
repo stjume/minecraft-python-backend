@@ -62,7 +62,10 @@ public class SetPlayerStat extends Command {
                         maxHealthAttr.setBaseValue(this.value); // Example: double the normal max health
                     }
                 }
-                case HEALTH -> target.setHealth(this.value);
+                case HEALTH -> {
+                    double health = Math.min(this.value, target.getAttribute(Attribute.MAX_HEALTH).getValue());
+                    target.setHealth(health);
+                }
                 case FOOD_LEVEL -> target.setFoodLevel((int)this.value);
                 case SATURATION -> target.setSaturation((int)this.value);
                 case XP_LEVEL -> target.setLevel((int)this.value);
