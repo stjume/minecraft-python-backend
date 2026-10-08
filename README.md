@@ -518,6 +518,10 @@ deleteBossBar𝇉myuniquename
 
 ```
 
+### Command: deleteAllBossBars
+
+- `deleteAllBossBars` deletes all boss bars created.
+
 ### Command: batch
 
 !!This command is currently not supported!!
