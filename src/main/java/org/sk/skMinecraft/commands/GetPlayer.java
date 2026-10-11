@@ -56,13 +56,13 @@ public class GetPlayer extends Command {
         PlayerInventory inventory = target.getInventory();
         
         int heldIndex = inventory.getHeldItemSlot();
-        String heldItemString = Integer.toString(heldIndex) + "+;:";
+        String heldItemString = Integer.toString(heldIndex) + ":;:";
         heldItemBlock: {
             ItemStack heldItemStack = inventory.getItem(heldIndex);
             if(heldItemStack == null) break heldItemBlock;
 
             ItemMeta meta = heldItemStack.getItemMeta();
-            heldItemString = heldIndex + "+" + heldItemStack.getType().name() + ";" + meta.getDisplayName() + ":" + heldItemStack.getAmount();
+            heldItemString = heldIndex + ":" + heldItemStack.getType().name() + ";" + meta.getDisplayName() + ":" + heldItemStack.getAmount();
         }
         
         return SkMinecraft.joinWithSeperator(
