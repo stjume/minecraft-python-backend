@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
@@ -52,11 +53,11 @@ public class SetPlayerPos extends Command {
 
     @Override
     public void apply() {
-        Bukkit.getScheduler().runTask(plugin, () -> {
+        String result = SkMinecraft.runBukkitTaskSync(plugin, () -> {
             Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
             if(playerIndex < 0 || playerIndex >= players.length) {
-                writer.println("error invalid_index");
-                return;
+                // writer.println("error invalid_index");
+                return SkMinecraft.getFailMessage();
             }
 
             Player player = players[playerIndex];
@@ -67,7 +68,11 @@ public class SetPlayerPos extends Command {
                 loc.setYaw(this.rot);
             }
             player.teleport(loc);
+
+            return SkMinecraft.getSuccessMessage();
         });
 
+        // Hier könnte man das dann returnen
+        // return result
     }
 }

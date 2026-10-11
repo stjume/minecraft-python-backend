@@ -3,6 +3,7 @@ package org.sk.skMinecraft.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
@@ -64,5 +65,6 @@ public class SetPlayerVelocity extends Command {
                 case LOOKING -> target.setVelocity(target.getLocation().getDirection().normalize().multiply(this.strength));
             }
         });
+        this.writer.println(SkMinecraft.getSuccessMessage());
     }
 }

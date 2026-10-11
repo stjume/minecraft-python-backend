@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 
 public class PostChat extends Command {
@@ -17,5 +18,6 @@ public class PostChat extends Command {
     @Override
     public void apply() {
         Bukkit.broadcastMessage(this.message);
+        this.writer.println(SkMinecraft.getSuccessMessage());
     }
 }

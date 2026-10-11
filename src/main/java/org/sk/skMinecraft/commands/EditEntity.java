@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 import org.sk.skMinecraft.data.Position;
@@ -107,5 +108,6 @@ public class EditEntity extends Command {
                 ent.setCustomName(this.name);
             }
         });
+        this.writer.println(SkMinecraft.getSuccessMessage());
     }
 }

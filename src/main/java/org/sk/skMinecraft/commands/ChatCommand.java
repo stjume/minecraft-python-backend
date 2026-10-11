@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 
 public class ChatCommand extends Command {
@@ -19,5 +20,6 @@ public class ChatCommand extends Command {
         Bukkit.getScheduler().runTask(this.plugin, () -> {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), this.command);
         });
+        this.writer.println(SkMinecraft.getSuccessMessage());
     }
 }

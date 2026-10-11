@@ -7,6 +7,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
 
@@ -80,5 +81,7 @@ public class AddInventory extends Command{
                 inv.addItem(stack);
             }
         });
+        this.writer.println(SkMinecraft.getSuccessMessage());
+
     }
 }
