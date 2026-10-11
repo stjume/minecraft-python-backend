@@ -173,7 +173,7 @@ Flags are arguments that toggle an effect, the send command just needs to contai
   - `<saturation>` The players saturation level
   - `<xp_level>` The level number of the player
   - `<xp_progress>` The current progress of the player along the progress bar, will be between 0 and 1
-  - `<held_item>` The currently held item as `<index>+<item-type>;<item-display-name>:<amount>`
+  - `<held_item>` The currently held item as `<index>:<item-type>;<item-display-name>:<amount>`
 
 #### Notes
 
@@ -184,7 +184,7 @@ Flags are arguments that toggle an effect, the send command just needs to contai
 
 ```bash
 getPlayer𝇉0
-0𝇉Player1𝇉-6.046𝇉64.000𝇉-5.352𝇉world𝇉101𝇉GRASS_BLOCK𝇉false𝇉10.000𝇉10.000𝇉20.000𝇉5.000𝇉0.000𝇉0.000𝇉1+WHEAT_SEEDS;:1
+0𝇉Player1𝇉-6.046𝇉64.000𝇉-5.352𝇉world𝇉101𝇉GRASS_BLOCK𝇉false𝇉10.000𝇉10.000𝇉20.000𝇉5.000𝇉0.000𝇉0.000𝇉1:WHEAT_SEEDS;:1
 ```
 
 ### Command: GetPlayerByName
