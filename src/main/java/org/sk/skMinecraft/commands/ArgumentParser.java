@@ -12,6 +12,9 @@ public class ArgumentParser {
     public static Function<String, Object> StringParser = (arg) -> arg;
     public static Function<String, Object> IntParser = Integer::parseInt;
     public static Function<String, Object> DoubleParser = Double::parseDouble;
+    public static Function<String, Object> BooleanParser = (arg) -> {
+        return arg.equalsIgnoreCase("true");
+    };
 
     public static class ArgumentResult {
         Object value;
