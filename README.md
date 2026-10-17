@@ -242,17 +242,19 @@ setPlayerStat𝇉MAX_HEALTH𝇉0𝇉10
 
 ### Command: setPlayerVelocity
 
-- `setPlayerVelocity𝇉<type:String𝇉<playerIndex:int>𝇉<value:double>`
+- `setPlayerVelocity𝇉<type:String𝇉<playerIndex:int>𝇉<value:double>?x:double?𝇉?y:double?𝇉?z:double?!add`
 
 #### Args
 
-- `type` one of `UP`, `DOWN`, `BACK`,`LOOKING`
+- `type` one of `UP`, `DOWN`, `BACK`,`LOOKING`, `VECTOR`
   - `UP` is an impulse straight up
   - `Down` is an impulse straight down
   - `BACK` is an impulse away from the players looking direction
   - `LOOKING` is an impulse in the direction the player is looking
 - `playerIndex` the index of the online player
-- `value` the strength of the impulse. The strenght of a normal player jump is 0.5
+- `value` the strength of the impulse. The stength of a normal player jump is 0.5
+- `x,y,z` the position in case the `type=VECTOR`
+- `add` this flags controls whether the velocity is set or added, if the flag is set the new velocity is added onto the current velocity
 
 #### Example
 
