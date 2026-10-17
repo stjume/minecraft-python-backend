@@ -41,6 +41,7 @@ public class GetPlayer extends Command {
         String name = target.getName();
         String looking_at = "AIR";
         int block_x = 0, block_y = 0, block_z = 0;
+        String block_world = "";
         UUID looking_at_entity_id = UUID.randomUUID();
         try {
             Block looking_at_block = target.getTargetBlock(null, 200);
@@ -48,6 +49,7 @@ public class GetPlayer extends Command {
             block_x = (int) looking_at_block.getLocation().getX();
             block_y = (int) looking_at_block.getLocation().getY();
             block_z = (int) looking_at_block.getLocation().getZ();
+            block_world = looking_at_block.getWorld().getName();
 
             Location eye = target.getEyeLocation();
             RayTraceResult result = target.getWorld().rayTraceEntities(eye, eye.getDirection(), 200,
@@ -88,7 +90,7 @@ public class GetPlayer extends Command {
                     + heldItemStack.getAmount();
         }
 
-        String looking_at_block_output = looking_at + ":" + block_x + ":" + block_y + ":" + block_z;
+        String looking_at_block_output = looking_at + ":" + block_x + ":" + block_y + ":" + block_z + ":" + block_world;
         String lookint_at_entity_output = GetEntity.informationString(SkMinecraft.secondLevelSeperator, looking_at_entity_id, Bukkit.getEntity(looking_at_entity_id));
 
         return SkMinecraft.joinWithSeperator(
