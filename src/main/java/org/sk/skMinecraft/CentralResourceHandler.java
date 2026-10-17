@@ -9,10 +9,8 @@ import java.util.HashMap;
 public class CentralResourceHandler {
 
     private static ArrayList<ChatMessage> chatMessages;
-    private static HashMap<String, Entity> spawnedEntites;
 
     public static void init() {
-        CentralResourceHandler.spawnedEntites = new HashMap<>();
         CentralResourceHandler.chatMessages = new ArrayList<ChatMessage>();
     }
 
@@ -25,14 +23,6 @@ public class CentralResourceHandler {
         CentralResourceHandler.chatMessages = new ArrayList<>();
 
         return copy;
-    }
-
-    public static void addEntity(String id, Entity ent) {
-        CentralResourceHandler.spawnedEntites.put(id, ent);
-    }
-
-    public static Entity getEntity(String id) {
-        return CentralResourceHandler.spawnedEntites.get(id);
     }
 
 }
