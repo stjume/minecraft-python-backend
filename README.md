@@ -242,7 +242,7 @@ setPlayerStat𝇉MAX_HEALTH𝇉0𝇉10
 
 ### Command: setPlayerVelocity
 
-- `setPlayerVelocity𝇉<type:String𝇉<playerIndex:int>𝇉<value:double>?x:double?𝇉?y:double?𝇉?z:double?!add`
+- `setPlayerVelocity𝇉<type:String𝇉<playerIndex:int>𝇉<value:double>?x:double?𝇉?y:double?𝇉?z:double?!add!`
 
 #### Args
 
