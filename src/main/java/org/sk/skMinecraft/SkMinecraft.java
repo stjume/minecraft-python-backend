@@ -24,29 +24,34 @@ public final class SkMinecraft extends JavaPlugin implements Listener {
     private ServerSocket serverSocket;
 
     public static String seperator = "𝇉";
+    public static String secondLevelSeperator = "𝇊";
 
     public record StringCommand(String name, String[] arguments) {
     };
 
     public static String joinWithSeperator(Object... args) {
+        return joinWithSeperatorArg(seperator, args);
+    }
+
+    public static String joinWithSeperatorArg(String sep, Object... args) {
         String result = "";
 
-        for(int i = 0;i < args.length;i++){
+        for (int i = 0; i < args.length; i++) {
 
             Object arg_i = args[i];
-            if (arg_i == null){
+            if (arg_i == null) {
                 arg_i = "null";
             }
 
-            if(arg_i instanceof Double ){
+            if (arg_i instanceof Double) {
                 result += String.format("%.3f", arg_i);
             } else {
                 result += arg_i.toString();
             }
-            if(i < args.length - 1) {
-                result += SkMinecraft.seperator;
+            if (i < args.length - 1) {
+                result += sep;
             }
-        }  
+        }
 
         return result;
     }

@@ -16,7 +16,7 @@ public class GetPlayerByName extends Command {
 
         ParseResult result = parser.parse(command.arguments());
 
-        if(!result.isValid()) {
+        if (!result.isValid()) {
             this.valid = false;
             return;
         }
@@ -26,26 +26,27 @@ public class GetPlayerByName extends Command {
 
     @Override
     public void apply() {
-        Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
 
-        Player target = null;
-        int playerIndex = 0;
-        for(int i = 0;i < players.length;i++) {
-            if(players[i].getName().equals(name)) {
-                target = players[i];
-                playerIndex = i;
-                break;
+            Player target = null;
+            int playerIndex = 0;
+            for (int i = 0; i < players.length; i++) {
+                if (players[i].getName().equals(name)) {
+                    target = players[i];
+                    playerIndex = i;
+                    break;
+                }
             }
-        }
-        
-        if(target == null) {
-            writer.println("error player_not_found");
-            return;
-        }
 
-        String result = GetPlayer.convertPlayerToString(target, playerIndex);
+            if (target == null) {
+                writer.println("error player_not_found");
+                return;
+            }
 
-        writer.println(result);
+            String result = GetPlayer.convertPlayerToString(target, playerIndex);
+
+            writer.println(result);
+        });
     }
-    
 }

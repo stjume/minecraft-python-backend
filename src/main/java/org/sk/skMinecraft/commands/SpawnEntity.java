@@ -1,11 +1,14 @@
 package org.sk.skMinecraft.commands;
 
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.sk.skMinecraft.CentralResourceHandler;
+import org.sk.skMinecraft.SkMinecraft;
 import org.sk.skMinecraft.SkMinecraft.StringCommand;
 import org.sk.skMinecraft.commands.ArgumentParser.ParseResult;
 
@@ -49,10 +52,9 @@ public class SpawnEntity extends Command{
         Bukkit.getScheduler().runTask(this.plugin, () -> {
             Location loc = new Location(this.world, x, y, z);
             Entity entity = world.spawnEntity(loc, this.type);
-            CentralResourceHandler.addEntity(entity.getUniqueId().toString(), entity);
 
-            String uuid = entity.getUniqueId().toString();
-            String output = GetEntity.informationString(uuid, entity);
+            UUID uuid = entity.getUniqueId();
+            String output = GetEntity.informationString(SkMinecraft.seperator, uuid, entity);
             writer.println(output);
         });
     }
