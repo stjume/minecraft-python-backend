@@ -1,5 +1,6 @@
 package org.sk.skMinecraft.commands;
 
+import java.rmi.server.UID;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
@@ -40,7 +41,7 @@ public class GetPlayer extends Command {
         String name = target.getName();
         String looking_at = "AIR";
         int block_x = 0, block_y = 0, block_z = 0;
-        String looking_at_entity_id = "";
+        UUID looking_at_entity_id = UUID.randomUUID();
         try {
             Block looking_at_block = target.getTargetBlock(null, 200);
             looking_at = looking_at_block.getType().name();
@@ -52,7 +53,7 @@ public class GetPlayer extends Command {
             RayTraceResult result = target.getWorld().rayTraceEntities(eye, eye.getDirection(), 200,
                     e -> !e.equals(target));
             if (result != null) {
-                looking_at_entity_id = result.getHitEntity().getUniqueId().toString();
+                looking_at_entity_id = result.getHitEntity().getUniqueId();
             }
 
         } catch (Exception e) {
@@ -88,6 +89,7 @@ public class GetPlayer extends Command {
         }
 
         String looking_at_block_output = looking_at + ":" + block_x + ":" + block_y + ":" + block_z;
+        String lookint_at_entity_output = GetEntity.informationString(SkMinecraft.secondLevelSeperator, looking_at_entity_id, Bukkit.getEntity(looking_at_entity_id));
 
         return SkMinecraft.joinWithSeperator(
                 playerIndex,
@@ -98,7 +100,7 @@ public class GetPlayer extends Command {
                 world_name,
                 rotation,
                 looking_at_block_output,
-                looking_at_entity_id,
+                lookint_at_entity_output,
                 sneak,
                 maxhealth,
                 health,
