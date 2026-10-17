@@ -30,9 +30,9 @@ public class SetPlayerVelocity extends Command {
                 ArgumentParser.IntParser,
                 ArgumentParser.DoubleParser);
 
-        parser.addOptionalArgument("x", ArgumentParser.DoubleParser, 0);
-        parser.addOptionalArgument("y", ArgumentParser.DoubleParser, 0);
-        parser.addOptionalArgument("z", ArgumentParser.DoubleParser, 0);
+        parser.addOptionalArgument("x", ArgumentParser.DoubleParser, 0d);
+        parser.addOptionalArgument("y", ArgumentParser.DoubleParser, 0d);
+        parser.addOptionalArgument("z", ArgumentParser.DoubleParser, 0d);
 
         parser.addFlag("add");
 
